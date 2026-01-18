@@ -37,7 +37,19 @@ function App() {
   // Handle UPI payment
   const handleUPIPayment = () => {
     if (isMobile) {
-      window.location.href = paymentInfo.upi.deepLink
+      // Try to open UPI app, but don't throw error if it fails
+      try {
+        window.location.href = paymentInfo.upi.deepLink
+      } catch (error) {
+        // If UPI app not available, show the QR/ID screen
+        setPaymentMethod('upi')
+      }
+      // Set a timeout to show QR if user comes back (app not opened)
+      setTimeout(() => {
+        if (document.visibilityState === 'visible') {
+          setPaymentMethod('upi')
+        }
+      }, 1000)
     } else {
       setPaymentMethod('upi')
     }
