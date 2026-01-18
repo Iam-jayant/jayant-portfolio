@@ -1,10 +1,47 @@
 import { useState } from 'react'
-import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee } from 'lucide-react'
+import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
 import './App.css'
 
 function App() {
   const [activeTab, setActiveTab] = useState('about')
+  const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [paymentMethod, setPaymentMethod] = useState(null)
+  const [copiedText, setCopiedText] = useState('')
+
+  // Payment Data
+  const paymentInfo = {
+    upi: {
+      id: 'jayantkurekar1-1@oksbi',
+      name: 'Jayant Kurekar',
+      number: '8767629570',
+      deepLink: 'upi://pay?pa=jayantkurekar1-1@oksbi&pn=Jayant%20Kurekar&cu=INR'
+    },
+    crypto: {
+      ethereum: '0xC3C19fA66640769939A838dcBb78Df7d715F6663',
+      solana: '8i78BFfNmrufu1dQx5uFNMSrAVP6PXt2fMwr9TfWnWn1',
+      bitcoin: 'bc1qsat8cr6mzwfeun0sm2slqjvy9tf8d35jctynv0'
+    }
+  }
+
+  // Detect if mobile device
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
+  // Copy to clipboard handler
+  const copyToClipboard = (text, label) => {
+    navigator.clipboard.writeText(text)
+    setCopiedText(label)
+    setTimeout(() => setCopiedText(''), 2000)
+  }
+
+  // Handle UPI payment
+  const handleUPIPayment = () => {
+    if (isMobile) {
+      window.location.href = paymentInfo.upi.deepLink
+    } else {
+      setPaymentMethod('upi')
+    }
+  }
 
   // Personal Data
   const personalInfo = {
@@ -212,9 +249,9 @@ function App() {
                   <Zap size={20} /> Learning Now
                 </h3>
                 <ul className="info-list">
-                  <li>Rust Lang Book</li>
+                  <li>AI in Web3</li>
+                  <li>System Design</li>
                   <li>Solana Development</li>
-                  <li>Zero Knowledge Proofs</li>
                 </ul>
               </div>
               <div className="info-card">
@@ -224,17 +261,14 @@ function App() {
                 <ul className="info-list">
                   <li>DeFi Protocols</li>
                   <li>Hackathons</li>
-                  <li>Open Source</li>
+                  <li>Generative AI</li>
                 </ul>
               </div>
             </div>
 
             <button
               className="tea-button"
-              onClick={() => {
-                navigator.clipboard.writeText('8767629570');
-                alert('UPI Number 8767629570 copied to clipboard! Pay via any UPI App.');
-              }}
+              onClick={() => setShowPaymentModal(true)}
             >
               <Coffee size={20} /> Buy me a chai!
             </button>
@@ -427,6 +461,161 @@ function App() {
       <footer className="footer">
         © 2026 {personalInfo.name} • Built with React + Vite
       </footer>
+
+      {/* Payment Modal */}
+      {showPaymentModal && (
+        <div className="modal-overlay" onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}>
+              <X size={24} />
+            </button>
+
+            {!paymentMethod ? (
+              <>
+                <div className="modal-header">
+                  <Coffee size={32} />
+                  <h2 className="modal-title">Buy me a chai!</h2>
+                  <p className="modal-subtitle">Choose your payment method</p>
+                </div>
+
+                <div className="payment-options">
+                  <button className="payment-option-card" onClick={handleUPIPayment}>
+                    <div className="payment-icon upi-icon">
+                      <Smartphone size={28} />
+                    </div>
+                    <h3 className="payment-option-title">UPI Payment</h3>
+                    <p className="payment-option-desc">
+                      {isMobile ? 'Pay instantly via UPI app' : 'Scan QR or copy UPI ID'}
+                    </p>
+                  </button>
+
+                  <button className="payment-option-card" onClick={() => setPaymentMethod('crypto')}>
+                    <div className="payment-icon crypto-icon">
+                      <Monitor size={28} />
+                    </div>
+                    <h3 className="payment-option-title">Crypto Payment</h3>
+                    <p className="payment-option-desc">ETH, SOL, or BTC</p>
+                  </button>
+                </div>
+              </>
+            ) : paymentMethod === 'upi' ? (
+              <>
+                <div className="modal-header">
+                  <Smartphone size={32} />
+                  <h2 className="modal-title">UPI Payment</h2>
+                  <p className="modal-subtitle">Scan QR or copy UPI ID</p>
+                </div>
+
+                <div className="payment-details">
+                  <div className="qr-container">
+                    <img
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(paymentInfo.upi.deepLink)}`}
+                      alt="UPI QR Code"
+                      className="qr-code"
+                    />
+                  </div>
+
+                  <div className="upi-details">
+                    <div className="detail-row">
+                      <span className="detail-label">UPI ID</span>
+                      <div className="detail-value-group">
+                        <span className="detail-value">{paymentInfo.upi.id}</span>
+                        <button
+                          className="copy-button"
+                          onClick={() => copyToClipboard(paymentInfo.upi.id, 'upi-id')}
+                        >
+                          {copiedText === 'upi-id' ? <Check size={16} /> : <Copy size={16} />}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="detail-row">
+                      <span className="detail-label">Mobile</span>
+                      <div className="detail-value-group">
+                        <span className="detail-value">{paymentInfo.upi.number}</span>
+                        <button
+                          className="copy-button"
+                          onClick={() => copyToClipboard(paymentInfo.upi.number, 'mobile')}
+                        >
+                          {copiedText === 'mobile' ? <Check size={16} /> : <Copy size={16} />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button className="back-button" onClick={() => setPaymentMethod(null)}>
+                    ← Back to options
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="modal-header">
+                  <Monitor size={32} />
+                  <h2 className="modal-title">Crypto Payment</h2>
+                  <p className="modal-subtitle">Send to any of these addresses</p>
+                </div>
+
+                <div className="payment-details">
+                  <div className="crypto-addresses">
+                    <div className="crypto-card">
+                      <div className="crypto-header">
+                        <span className="crypto-name">Ethereum (ETH)</span>
+                        <span className="crypto-badge">ERC-20</span>
+                      </div>
+                      <div 
+                        className="crypto-address"
+                        onClick={() => copyToClipboard(paymentInfo.crypto.ethereum, 'eth')}
+                      >
+                        {paymentInfo.crypto.ethereum}
+                        <span className="crypto-address-copy-icon">
+                          {copiedText === 'eth' ? <Check size={16} /> : <Copy size={16} />}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="crypto-card">
+                      <div className="crypto-header">
+                        <span className="crypto-name">Solana (SOL)</span>
+                        <span className="crypto-badge">SPL</span>
+                      </div>
+                      <div 
+                        className="crypto-address"
+                        onClick={() => copyToClipboard(paymentInfo.crypto.solana, 'sol')}
+                      >
+                        {paymentInfo.crypto.solana}
+                        <span className="crypto-address-copy-icon">
+                          {copiedText === 'sol' ? <Check size={16} /> : <Copy size={16} />}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="crypto-card">
+                      <div className="crypto-header">
+                        <span className="crypto-name">Bitcoin (BTC)</span>
+                        <span className="crypto-badge">Native</span>
+                      </div>
+                      <div 
+                        className="crypto-address"
+                        onClick={() => copyToClipboard(paymentInfo.crypto.bitcoin, 'btc')}
+                      >
+                        {paymentInfo.crypto.bitcoin}
+                        <span className="crypto-address-copy-icon">
+                          {copiedText === 'btc' ? <Check size={16} /> : <Copy size={16} />}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button className="back-button" onClick={() => setPaymentMethod(null)}>
+                    ← Back to options
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
