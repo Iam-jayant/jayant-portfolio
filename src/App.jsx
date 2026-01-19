@@ -75,27 +75,27 @@ function App() {
     },
     {
       category: 'Frontend',
-      items: ['React', 'Next.js', 'HTML', 'CSS', 'JavaFX']
+      items: ['React', 'Next.js', 'HTML', 'CSS']
     },
     {
       category: 'Backend',
-      items: ['Node.js', 'Express', 'REST APIs']
+      items: ['Node.js', 'Express', 'Java', 'REST APIs', 'Flask APIs']
     },
     {
       category: 'Web3',
       items: ['Web3.js', 'Hardhat', 'Ethers.js', 'Smart Contracts']
     },
-    {
-      category: 'AI/ML',
-      items: ['Azure AI', 'HuggingFace', 'LangChain', 'PyTorch', 'scikit-learn']
+        {
+      category: 'Blockchain',
+      items: ['Ethereum', 'EVM l2 chains', 'Monad', 'Movement', 'Aptos']
     },
     {
       category: 'Databases',
-      items: ['PostgreSQL', 'MongoDB', 'Firebase', 'Supabase']
+      items: ['PostgreSQL', 'MongoDB',]
     },
     {
       category: 'Tools & Others',
-      items: ['Git', 'Docker', 'Linux', 'VS Code']
+      items: ['Git', 'Firebase', 'Privy',' MCP', 'Supabase']
     }
   ]
 
@@ -282,7 +282,7 @@ function App() {
               className="tea-button"
               onClick={() => setShowPaymentModal(true)}
             >
-              <Coffee size={20} /> Buy me a chai!
+              <Coffee size={20} /> Buy me a Coffee!
             </button>
           </div >
         )
@@ -486,7 +486,7 @@ function App() {
               <>
                 <div className="modal-header">
                   <Coffee size={32} />
-                  <h2 className="modal-title">Buy me a chai!</h2>
+                  <h2 className="modal-title">Buy me a Coffee!</h2>
                   <p className="modal-subtitle">Choose your payment method</p>
                 </div>
 
