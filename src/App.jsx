@@ -100,6 +100,18 @@ function App() {
     {
       title: 'Ascend Protocol',
       year: '2025',
+      tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
+      description: 'Decentralized Marketplace for Premium Code & Developer Bounties. Payments are x402 enabled and transactions are seamlessly fast.',
+      features: [
+        'Buy & Sell premium code repositories',
+        'aunch Bounties for bug fixes, features, and code challenges',
+        'Trustless Payments with blockchain-backed rewards'
+      ],
+      link: 'https://codevault-asyncawait.netlify.app/'
+    },
+    {
+      title: 'Ascend Protocol',
+      year: '2025',
       tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
       description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
       features: [
