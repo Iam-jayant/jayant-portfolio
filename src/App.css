@@ -289,6 +289,14 @@
   justify-content: space-between;
   align-items: start;
   margin-bottom: 16px;
+  gap: 12px;
+}
+
+.project-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .project-title {
@@ -349,6 +357,28 @@
   position: absolute;
   left: 0;
   font-weight: 700;
+}
+
+.project-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  flex-shrink: 0;
+}
+
+.project-link-button:hover {
+  background: var(--accent-blue);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
 }
 
 /* Achievements Section */
@@ -689,6 +719,11 @@
     margin-bottom: 14px;
   }
 
+  .project-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .project-title {
     font-size: 1.05rem;
     margin-bottom: 6px;
@@ -719,6 +754,16 @@
     font-size: 0.8rem;
     margin-bottom: 6px;
     padding-left: 18px;
+  }
+
+  .project-link-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .project-link-button svg {
+    width: 16px;
+    height: 16px;
   }
 
   .achievement-card {

@@ -99,58 +99,63 @@ function App() {
   const projects = [
     {
       title: 'Ascend Protocol',
-      year: '2024',
-      tags: ['WEB3', 'SOLIDITY', 'REACT'],
+      year: '2025',
+      tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
       description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
       features: [
         'Smart contract-based inheritance vaults',
         'Automated beneficiary distribution',
         'Secure multi-signature support'
-      ]
+      ],
+      link: 'https://github.com/Iam-jayant'
     },
     {
       title: 'SAAD - AI Sentiment Alert System',
-      year: '2024',
+      year: '2025',
       tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
       description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
       features: [
         'Real-time social media monitoring',
         'Advanced sentiment analysis',
         'Slack & Email integration'
-      ]
+      ],
+      link: 'https://github.com/Iam-jayant/Agent-Saad'
     },
     {
       title: 'CRYPT - NFT Gift Protocol',
-      year: '2024',
-      tags: ['WEB3', 'AI', 'NFT'],
+      year: '2025',
+      tags: ['POLYGON', 'AI', 'NFT'],
       description: 'Decentralized gifting platform combining AI-generated art with ERC-20 token vaults for personalized NFT gift cards.',
       features: [
         'AI-generated personalized NFT art',
         'ERC-20 token vault integration',
         'Instant liquidation option'
-      ]
+      ],
+      link: 'https://github.com/Iam-jayant/CRYPT'
     },
     {
       title: 'EraseIt - Ultra-Fast Drive Wiper',
-      year: '2024',
-      tags: ['SOFTWARE', 'JAVA', 'SECURITY'],
+      year: '2025',
+      tags: ['SOFTWARE', 'JAVA', 'JAVAFX'],
       description: 'High-Performance NIST SP 800-88 Compliant Data Destruction Solution ensuring 100% data unrecoverability.',
       features: [
         'NIST SP 800-88 compliant wiping',
         'Multi-pass secure deletion',
         'Fast performance optimization'
-      ]
+      ],
+      link: 'https://github.com/Iam-jayant/EraseIt'
     },
     {
       title: 'Jeevan Setu – Bridge of Life',
-      year: '2024',
-      tags: ['FULL-STACK', 'HEALTHCARE', 'NODE.JS'],
+      year: '2025',
+      tags: ['FULL-STACK', 'SUPABASE', 'NODE.JS'],
       description: 'Role-based platform securely connecting organ donors and recipients through verified doctors and hospital networks.',
       features: [
         'Secure donor-recipient matching',
         'Doctor verification system',
         'Hospital network integration'
-      ]
+      ],
+      link: 'https://github.com/Iam-jayant'
     }
   ]
 
@@ -319,7 +324,20 @@ function App() {
                       ))}
                     </div>
                   </div>
-                  <span className="project-year">{project.year}</span>
+                  <div className="project-header-right">
+                    <span className="project-year">{project.year}</span>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link-button"
+                        title="View Project"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <p className="project-description">{project.description}</p>
                 {project.features && (
