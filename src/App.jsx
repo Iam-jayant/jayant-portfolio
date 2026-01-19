@@ -74,12 +74,8 @@ function App() {
       items: ['JavaScript', 'TypeScript', 'Solidity', 'Java', 'Python']
     },
     {
-      category: 'Frontend',
-      items: ['React', 'Next.js', 'HTML', 'CSS']
-    },
-    {
-      category: 'Backend',
-      items: ['Node.js', 'Express', 'Java', 'REST APIs', 'Flask APIs']
+      category: 'Frameworks',
+      items: ['React', 'Next.js', 'Node.js', 'Express']
     },
     {
       category: 'Web3',
@@ -289,17 +285,23 @@ function App() {
 
       case 'stack':
         return (
-          <div className="stack-grid">
-            {stackData.map((stack, index) => (
-              <div key={index} className="stack-category">
-                <h3 className="stack-category-title">{stack.category}</h3>
-                <div className="stack-items">
-                  {stack.items.map((item, itemIndex) => (
-                    <span key={itemIndex} className="stack-item">{item}</span>
-                  ))}
+          <div className="stack-section">
+            <h2 className="stack-main-title" style = {{color:'black', wordSpacing:'0.5px', paddingBottom:'30px',fontSize:'29px', fontFamily:'monospace',  }}>TECH STACK</h2>
+            <div className="stack-grid">
+              {stackData.map((stack, index) => (
+                <div key={index} className="stack-category">
+                  <h3 className="stack-category-title">
+                    <span className="stack-icon">{stack.icon}</span>
+                    {stack.category}
+                  </h3>
+                  <div className="stack-items">
+                    {stack.items.map((item, itemIndex) => (
+                      <span key={itemIndex} className="stack-item">{item}</span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )
 
@@ -362,7 +364,7 @@ function App() {
       case 'community':
         return (
           <div className="community-content">
-            <p>Community contributions and talks coming soon...</p>
+            <p>Will be adding soon...</p>
           </div>
         )
 
@@ -461,7 +463,7 @@ function App() {
           className={`nav-button ${activeTab === 'community' ? 'active' : ''}`}
           onClick={() => setActiveTab('community')}
         >
-          Community
+          More
         </button>
       </div>
 
@@ -471,7 +473,7 @@ function App() {
       </div>
 
       <footer className="footer">
-        © 2026 {personalInfo.name} • Built with React + Vite
+        © 2026 | {personalInfo.name} 
       </footer>
 
       {/* Payment Modal */}
