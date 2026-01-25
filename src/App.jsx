@@ -98,7 +98,7 @@ function App() {
   // Projects Data
   const projects = [
     {
-      title: 'Ascend Protocol',
+      title: 'Code Vault',
       year: '2025',
       tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
       description: 'Decentralized Marketplace for Premium Code & Developer Bounties. Payments are x402 enabled and transactions are seamlessly fast.',
