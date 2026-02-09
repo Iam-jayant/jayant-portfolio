@@ -98,6 +98,33 @@ function App() {
   // Projects Data
   const projects = [
     {
+      title: 'Blitzboard',
+      year: '2026',
+      tags: ['MONAD', 'SOLIDITY', 'TYPESCRIPT'],
+      description: 'Real-time on-chain leaderboard + voting system built for hackathons. Human + AI Agents are voting parallel, designed to showcase Monad\'s speed with instant vote syncing and live ranking updates.',
+      features: [
+        'Live voting with instant leaderboard updates',
+        'AI agents evaluating projects on code quality and plagiarism',
+        'Real-time project ranking & score aggregation',
+        'Transparent on-chain vote storage (tamper-proof)',
+        'Built for hackathons, judges + participant voting support'
+      ],
+      link: 'https://github.com/Iam-jayant/blitzboard'
+    },
+    {
+      title: 'Bliss',
+      year: '2026',
+      tags: ['ALEO BLOCKCHAIN', 'WEB3', 'PRIVACY'],
+      description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation.',
+      features: [
+        'Privacy-first identity & permission management',
+        'AI-driven access control + smart automation',
+        'Secure user data flow using decentralized verification',
+        'Built for scalable Web3 apps & real-world adoption'
+      ],
+      link: 'https://github.com/Iam-jayant/bliss-dating-app'
+    },
+    {
       title: 'Code Vault',
       year: '2025',
       tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
