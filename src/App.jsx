@@ -194,7 +194,7 @@ function App() {
         'Doctor verification system',
         'Hospital network integration'
       ],
-      link: 'https://github.com/Iam-jayant'
+      link: 'https://github.com/Iam-jayant/Jeevan-Setu'
     }
   ]
 
