@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
 import './App.css'
@@ -8,6 +8,10 @@ function App() {
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [paymentMethod, setPaymentMethod] = useState(null)
   const [copiedText, setCopiedText] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
+
+  const closeButtonRef = useRef(null)
+  const teaButtonRef = useRef(null)
 
   // Payment Data
   const paymentInfo = {
@@ -24,14 +28,41 @@ function App() {
     }
   }
 
-  // Detect if mobile device
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  // Detect if mobile / coarse pointer
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const coarsePointer = window.matchMedia?.('(pointer: coarse)').matches
+    const uaMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    setIsMobile(Boolean(coarsePointer || uaMobile))
+  }, [])
 
-  // Copy to clipboard handler
-  const copyToClipboard = (text, label) => {
-    navigator.clipboard.writeText(text)
-    setCopiedText(label)
-    setTimeout(() => setCopiedText(''), 2000)
+  // Copy to clipboard handler with fallback for insecure contexts
+  const copyToClipboard = async (text, label) => {
+    const fallbackCopy = () => {
+      const textarea = document.createElement('textarea')
+      textarea.value = text
+      textarea.setAttribute('readonly', '')
+      textarea.style.position = 'absolute'
+      textarea.style.left = '-9999px'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text)
+      } else {
+        fallbackCopy()
+      }
+      setCopiedText(label)
+      setTimeout(() => setCopiedText(''), 2000)
+    } catch (error) {
+      fallbackCopy()
+      setCopiedText(label)
+      setTimeout(() => setCopiedText(''), 2000)
+    }
   }
 
   // Handle UPI payment
@@ -55,6 +86,19 @@ function App() {
     }
   }
 
+  // Lock scroll when modal is open and manage focus
+  useEffect(() => {
+    if (!showPaymentModal) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      teaButtonRef.current?.focus()
+    }
+  }, [showPaymentModal])
+
   // Personal Data
   const personalInfo = {
     name: 'JAYANT',
@@ -62,7 +106,7 @@ function App() {
     github: 'Iam-jayant',
     linkedin: 'jayant-kurekar',
     email: 'jayantkurekar1@gmail.com',
-    twitter: 'x.com/0xjayantxyz',
+    twitter: 'https://x.com/0xjayantxyz',
     telegram: 'https://t.me/staticmelon',
     about: "Hi, I'm Jayant."
   }
@@ -81,17 +125,17 @@ function App() {
       category: 'Web3',
       items: ['Web3.js', 'Hardhat', 'Ethers.js', 'Smart Contracts']
     },
-        {
+    {
       category: 'Blockchain',
-      items: ['Ethereum', 'EVM l2 chains', 'Monad', 'Movement', 'Aptos']
+      items: ['Ethereum', 'EVM L2 chains', 'Monad', 'Movement', 'Aptos']
     },
     {
       category: 'Databases',
-      items: ['PostgreSQL', 'MongoDB',]
+      items: ['PostgreSQL', 'MongoDB']
     },
     {
       category: 'Tools & Others',
-      items: ['Git', 'Firebase', 'Privy',' MCP', 'Supabase']
+      items: ['Git', 'Firebase', 'Privy', 'MCP', 'Supabase']
     }
   ]
 
@@ -128,10 +172,10 @@ function App() {
       title: 'Code Vault',
       year: '2025',
       tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
-      description: 'Decentralized Marketplace for Premium Code & Developer Bounties. Payments are x402 enabled and transactions are seamlessly fast.',
+      description: 'Decentralized marketplace for premium code & developer bounties. Payments are x402 enabled and transactions are seamlessly fast.',
       features: [
         'Buy & Sell premium code repositories',
-        'aunch Bounties for bug fixes, features, and code challenges',
+        'Launch bounties for bug fixes, features, and code challenges',
         'Trustless Payments with blockchain-backed rewards'
       ],
       link: 'https://codevault-asyncawait.netlify.app/'
@@ -185,7 +229,7 @@ function App() {
       link: 'https://github.com/Iam-jayant/EraseIt'
     },
     {
-      title: 'Jeevan Setu – Bridge of Life',
+      title: 'Jeevan Setu - Bridge of Life',
       year: '2025',
       tags: ['FULL-STACK', 'SUPABASE', 'NODE.JS'],
       description: 'Role-based platform securely connecting organ donors and recipients through verified doctors and hospital networks.',
@@ -274,7 +318,7 @@ function App() {
               </p>
 
               <p className="about-text">
-                Hackathons shaped my mindset. Build fast, think deep, and deliver under pressure. I’ve been to <strong>15+ hackathons</strong>, won a few, and learned more there than any textbook.
+                Hackathons shaped my mindset. Build fast, think deep, and deliver under pressure. I've been to <strong>15+ hackathons</strong>, won a few, and learned more there than any textbook.
               </p>
 
               <p className="about-text">
@@ -321,6 +365,8 @@ function App() {
             <button
               className="tea-button"
               onClick={() => setShowPaymentModal(true)}
+              aria-label="Open buy me a coffee modal"
+              ref={teaButtonRef}
             >
               <Coffee size={20} /> Buy me a Coffee!
             </button>
@@ -332,15 +378,15 @@ function App() {
           <div className="stack-section">
             <h2 className="stack-main-title" style = {{color:'black', wordSpacing:'0.5px', paddingBottom:'30px',fontSize:'29px', fontFamily:'monospace',  }}>TECH STACK</h2>
             <div className="stack-grid">
-              {stackData.map((stack, index) => (
-                <div key={index} className="stack-category">
+              {stackData.map((stack) => (
+                <div key={stack.category} className="stack-category">
                   <h3 className="stack-category-title">
                     <span className="stack-icon">{stack.icon}</span>
                     {stack.category}
                   </h3>
                   <div className="stack-items">
-                    {stack.items.map((item, itemIndex) => (
-                      <span key={itemIndex} className="stack-item">{item}</span>
+                    {stack.items.map((item) => (
+                      <span key={item} className="stack-item">{item}</span>
                     ))}
                   </div>
                 </div>
@@ -352,14 +398,14 @@ function App() {
       case 'projects':
         return (
           <div className="projects-grid">
-            {projects.map((project, index) => (
-              <div key={index} className="project-card">
+            {projects.map((project) => (
+              <div key={project.title} className="project-card">
                 <div className="project-header">
                   <div>
                     <h3 className="project-title">{project.title}</h3>
                     <div className="project-tags">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="project-tag">{tag}</span>
+                      {project.tags.map((tag) => (
+                        <span key={`${project.title}-${tag}`} className="project-tag">{tag}</span>
                       ))}
                     </div>
                   </div>
@@ -372,6 +418,7 @@ function App() {
                         rel="noopener noreferrer"
                         className="project-link-button"
                         title="View Project"
+                        aria-label={`Open ${project.title}`}
                       >
                         <ExternalLink size={18} />
                       </a>
@@ -381,8 +428,8 @@ function App() {
                 <p className="project-description">{project.description}</p>
                 {project.features && (
                   <ul className="project-features">
-                    {project.features.map((feature, featureIndex) => (
-                      <li key={featureIndex}>{feature}</li>
+                    {project.features.map((feature) => (
+                      <li key={`${project.title}-${feature}`}>{feature}</li>
                     ))}
                   </ul>
                 )}
@@ -394,8 +441,8 @@ function App() {
       case 'achievements':
         return (
           <div className="achievements-grid">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="achievement-card">
+            {achievements.map((achievement) => (
+              <div key={achievement.name} className="achievement-card">
                 <div className="achievement-icon">
                   <Trophy size={20} />
                 </div>
@@ -409,6 +456,7 @@ function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="achievement-link"
+                    aria-label={`View certificate for ${achievement.name}`}
                   >
                     <ExternalLink size={16} />
                   </a>
@@ -439,6 +487,9 @@ function App() {
             src="/profile.jpg"
             alt="Jayant Kurekar"
             className="profile-image"
+            loading="lazy"
+            width="140"
+            height="140"
             onError={(e) => {
               e.target.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jayant'
             }}
@@ -452,6 +503,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              aria-label="LinkedIn profile"
             >
               <Linkedin size={20} />
             </a>
@@ -460,6 +512,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              aria-label="Twitter profile"
             >
               <Twitter size={20} />
             </a>
@@ -468,6 +521,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              aria-label="Telegram"
               title="Telegram"
             >
               <Send size={20} />
@@ -477,12 +531,14 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              aria-label="GitHub profile"
             >
               <Github size={20} />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
               className="social-link"
+              aria-label="Send email"
             >
               <Mail size={20} />
             </a>
@@ -530,14 +586,25 @@ function App() {
       </div>
 
       <footer className="footer">
-        © 2026 | {personalInfo.name} 
+        (c) 2026 | {personalInfo.name} 
       </footer>
 
       {/* Payment Modal */}
       {showPaymentModal && (
         <div className="modal-overlay" onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}>
+          <div
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="payment-modal-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}
+              aria-label="Close payment modal"
+              ref={closeButtonRef}
+            >
               <X size={24} />
             </button>
 
@@ -545,12 +612,12 @@ function App() {
               <>
                 <div className="modal-header">
                   <Coffee size={32} />
-                  <h2 className="modal-title">Buy me a Coffee!</h2>
+                  <h2 className="modal-title" id="payment-modal-title">Buy me a Coffee!</h2>
                   <p className="modal-subtitle">Choose your payment method</p>
                 </div>
 
                 <div className="payment-options">
-                  <button className="payment-option-card" onClick={handleUPIPayment}>
+                  <button className="payment-option-card" onClick={handleUPIPayment} aria-label="Pay via UPI">
                     <div className="payment-icon upi-icon">
                       <Smartphone size={28} />
                     </div>
@@ -560,7 +627,7 @@ function App() {
                     </p>
                   </button>
 
-                  <button className="payment-option-card" onClick={() => setPaymentMethod('crypto')}>
+                  <button className="payment-option-card" onClick={() => setPaymentMethod('crypto')} aria-label="Pay with crypto">
                     <div className="payment-icon crypto-icon">
                       <Monitor size={28} />
                     </div>
@@ -573,7 +640,7 @@ function App() {
               <>
                 <div className="modal-header">
                   <Smartphone size={32} />
-                  <h2 className="modal-title">UPI Payment</h2>
+                  <h2 className="modal-title" id="payment-modal-title">UPI Payment</h2>
                   <p className="modal-subtitle">Scan QR or copy UPI ID</p>
                 </div>
 
@@ -583,6 +650,8 @@ function App() {
                       src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(paymentInfo.upi.deepLink)}`}
                       alt="UPI QR Code"
                       className="qr-code"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 
@@ -614,8 +683,8 @@ function App() {
                     </div>
                   </div>
 
-                  <button className="back-button" onClick={() => setPaymentMethod(null)}>
-                    ← Back to options
+                  <button className="back-button" onClick={() => setPaymentMethod(null)} aria-label="Back to payment options">
+                    Back to options
                   </button>
                 </div>
               </>
@@ -623,7 +692,7 @@ function App() {
               <>
                 <div className="modal-header">
                   <Monitor size={32} />
-                  <h2 className="modal-title">Crypto Payment</h2>
+                  <h2 className="modal-title" id="payment-modal-title">Crypto Payment</h2>
                   <p className="modal-subtitle">Send to any of these addresses</p>
                 </div>
 
@@ -678,8 +747,8 @@ function App() {
                     </div>
                   </div>
 
-                  <button className="back-button" onClick={() => setPaymentMethod(null)}>
-                    ← Back to options
+                  <button className="back-button" onClick={() => setPaymentMethod(null)} aria-label="Back to payment options">
+                    Back to options
                   </button>
                 </div>
               </>
