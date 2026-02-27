@@ -8,9 +8,11 @@
   --accent-blue: #BAE1FF;
   --accent-green: #98FF98;
   --accent-lavender: #C4B0FF;
+  --accent-yellow: #FFE08A;
   --shadow: 4px 4px 0px 0px #000000;
   --font-main: 'Space Grotesk', sans-serif;
   --font-mono: 'Space Mono', monospace;
+  --font-sans: 'Space Grotesk', sans-serif;
 }
 
 .app {
@@ -92,6 +94,18 @@
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0px 0px var(--accent-lavender);
 
+}
+
+.social-link:focus-visible,
+.nav-button:focus-visible,
+.project-link-button:focus-visible,
+.modal-close:focus-visible,
+.back-button:focus-visible,
+.payment-option-card:focus-visible,
+.copy-button:focus-visible,
+.tea-button:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 3px;
 }
 
 /* Navigation Tabs */
@@ -353,7 +367,7 @@
 }
 
 .project-features li::before {
-  content: "→";
+  content: "\2192";
   position: absolute;
   left: 0;
   font-weight: 700;
@@ -901,7 +915,7 @@
 }
 
 .info-list li::before {
-  content: "•";
+  content: "\2022";
   position: absolute;
   left: 0;
   font-weight: bold;
