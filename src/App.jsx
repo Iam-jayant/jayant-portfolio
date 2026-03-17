@@ -142,6 +142,19 @@ function App() {
   // Projects Data
   const projects = [
     {
+      title: 'ProofOS',
+      year: '2026',
+      tags: ['EVM', 'WEB3', 'ZK'],
+      description: 'Privacy-preserving crypto income and tax proofs for India. ProofOS turns wallet activity into verifiable financial claims without exposing your full transaction history.',
+      features: [
+        'Privacy-first claim sharing (no raw wallet export required)',
+        'Multi-wallet workflows with ENS club integration',
+        'Certificate generation with ledger commitment and verification references',
+        'Optional decentralized publishing integrations (for configured environments)'
+      ],
+      repo: 'https://github.com/Iam-jayant/ProofOS',
+      live: 'https://proofos-theta.vercel.app/'
+    },
       title: 'Blitzboard',
       year: '2026',
       tags: ['MONAD', 'SOLIDITY', 'TYPESCRIPT'],
@@ -311,20 +324,21 @@ function App() {
 
               <p className="about-text">
                 I'm an engineering student and a developer. I genuinely enjoy shipping things that actually work.
-              </p>
-
-              <p className="about-text">
-                I build across <strong>Web3, full-stack, and AI</strong>, working with smart contracts, backend systems, and frontend polish. I like understanding the <strong>whole stack,</strong> not just one layer.
-              </p>
-
-              <p className="about-text">
-                Hackathons shaped my mindset. Build fast, think deep, and deliver under pressure. I've been to <strong>15+ hackathons</strong>, won a few, and learned more there than any textbook.
-              </p>
-
-              <p className="about-text">
-                Outside code, I travel and shoot. A reminder that great systems, like great photos, need clarity, patience, and intent.
-              </p>
-            </div>
+              {
+                title: 'Blitzboard',
+                year: '2026',
+                tags: ['MONAD', 'SOLIDITY', 'TYPESCRIPT'],
+                description: 'Real-time on-chain leaderboard + voting system built for hackathons. Human + AI Agents are voting parallel, designed to showcase Monad\'s speed with instant vote syncing and live ranking updates.',
+                features: [
+                  'Live voting with instant leaderboard updates',
+                  'AI agents evaluating projects on code quality and plagiarism',
+                  'Real-time project ranking & score aggregation',
+                  'Transparent on-chain vote storage (tamper-proof)',
+                  'Built for hackathons, judges + participant voting support'
+                ],
+                repo: 'https://github.com/Iam-jayant/blitzboard',
+                live: 'https://blitzboard.vercel.app/'
+              },
             <div className="github-calendar-container">
               <h3 className="github-calendar-title">
                 <Github size={24} /> Contributions
@@ -411,29 +425,42 @@ function App() {
                   </div>
                   <div className="project-header-right">
                     <span className="project-year">{project.year}</span>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link-button"
-                        title="View Project"
-                        aria-label={`Open ${project.title}`}
-                      >
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <p className="project-description">{project.description}</p>
-                {project.features && (
-                  <ul className="project-features">
-                    {project.features.map((feature) => (
-                      <li key={`${project.title}-${feature}`}>{feature}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+                      {project.repo && (
+                        <a
+                          href={project.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-button"
+                          title="View Repository"
+                          aria-label={`Open ${project.title} repository`}
+                        >
+                          <Github size={18} />
+                        </a>
+                      )}
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-button"
+                          title="Open Live Site"
+                          aria-label={`Open ${project.title} live site`}
+                        >
+                          <ExternalLink size={18} />
+                        </a>
+                      )}
+                        year: '2026',
+                        tags: ['ALEO BLOCKCHAIN', 'WEB3', 'PRIVACY'],
+                        description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation.',
+                        features: [
+                          'Privacy-first identity & permission management',
+                          'AI-driven access control + smart automation',
+                          'Secure user data flow using decentralized verification',
+                          'Built for scalable Web3 apps & real-world adoption'
+                        ],
+                        repo: 'https://github.com/Iam-jayant/bliss-dating-app',
+                        live: 'https://bliss-dating.vercel.app/'
+                      },
             ))}
           </div>
         )
@@ -459,18 +486,18 @@ function App() {
                     aria-label={`View certificate for ${achievement.name}`}
                   >
                     <ExternalLink size={16} />
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        )
-
-      case 'community':
-        return (
-          <div className="community-content">
-            <p>Will be adding soon...</p>
-          </div>
+                  {
+                    title: 'Code Vault',
+                    year: '2025',
+                    tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
+                    description: 'Decentralized marketplace for premium code & developer bounties. Payments are x402 enabled and transactions are seamlessly fast.',
+                    features: [
+                      'Buy & Sell premium code repositories',
+                      'Launch bounties for bug fixes, features, and code challenges',
+                      'Trustless Payments with blockchain-backed rewards'
+                    ],
+                    live: 'https://codevault-asyncawait.netlify.app/'
+                  },
         )
 
       default:
@@ -483,18 +510,18 @@ function App() {
       {/* Profile Section */}
       <div className="header">
         <div className="profile-section">
-          <img
-            src="/profile.jpg"
-            alt="Jayant Kurekar"
-            className="profile-image"
-            loading="lazy"
-            width="140"
-            height="140"
-            onError={(e) => {
-              e.target.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jayant'
-            }}
-          />
-          <h1 className="profile-name">{personalInfo.name}</h1>
+          {
+            title: 'Ascend Protocol',
+            year: '2025',
+            tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
+            description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
+            features: [
+              'Smart contract-based inheritance vaults',
+              'Automated beneficiary distribution',
+              'Secure multi-signature support'
+            ],
+            repo: 'https://github.com/Iam-jayant'
+          },
           <div className="tech-tags">{personalInfo.techStack}</div>
 
           <div className="social-links">
@@ -506,18 +533,18 @@ function App() {
               aria-label="LinkedIn profile"
             >
               <Linkedin size={20} />
-            </a>
-            <a
-              href={personalInfo.twitter !== '#' ? personalInfo.twitter : `https://twitter.com`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="Twitter profile"
-            >
-              <Twitter size={20} />
-            </a>
-            <a
-              href={personalInfo.telegram}
+            {
+              title: 'SAAD - AI Sentiment Alert System',
+              year: '2025',
+              tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
+              description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
+              features: [
+                'Real-time social media monitoring',
+                'Advanced sentiment analysis',
+                'Slack & Email integration'
+              ],
+              repo: 'https://github.com/Iam-jayant/Agent-Saad'
+            },
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
@@ -525,34 +552,34 @@ function App() {
               title="Telegram"
             >
               <Send size={20} />
-            </a>
-            <a
-              href={`https://github.com/${personalInfo.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="GitHub profile"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
+            {
+              title: 'CRYPT - NFT Gift Protocol',
+              year: '2025',
+              tags: ['POLYGON', 'AI', 'NFT'],
+              description: 'Decentralized gifting platform combining AI-generated art with ERC-20 token vaults for personalized NFT gift cards.',
+              features: [
+                'AI-generated personalized NFT art',
+                'ERC-20 token vault integration',
+                'Instant liquidation option'
+              ],
+              repo: 'https://github.com/Iam-jayant/CRYPT'
+            },
               className="social-link"
               aria-label="Send email"
             >
               <Mail size={20} />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation Tabs */}
-      <div className="nav-tabs">
-        <button
-          className={`nav-button ${activeTab === 'about' ? 'active' : ''}`}
-          onClick={() => setActiveTab('about')}
-        >
-          About
+            {
+              title: 'EraseIt - Ultra-Fast Drive Wiper',
+              year: '2025',
+              tags: ['SOFTWARE', 'JAVA', 'JAVAFX'],
+              description: 'High-Performance NIST SP 800-88 Compliant Data Destruction Solution ensuring 100% data unrecoverability.',
+              features: [
+                'NIST SP 800-88 compliant wiping',
+                'Multi-pass secure deletion',
+                'Fast performance optimization'
+              ],
+              repo: 'https://github.com/Iam-jayant/EraseIt'
+            },
         </button>
         <button
           className={`nav-button ${activeTab === 'stack' ? 'active' : ''}`}
@@ -576,18 +603,18 @@ function App() {
           className={`nav-button ${activeTab === 'community' ? 'active' : ''}`}
           onClick={() => setActiveTab('community')}
         >
-          More
-        </button>
-      </div>
-
-      {/* Content Area */}
-      <div className="content-area">
-        {renderContent()}
-      </div>
-
-      <footer className="footer">
-        (c) 2026 | {personalInfo.name} 
-      </footer>
+          {
+            title: 'Jeevan Setu - Bridge of Life',
+            year: '2025',
+            tags: ['FULL-STACK', 'SUPABASE', 'NODE.JS'],
+            description: 'Role-based platform securely connecting organ donors and recipients through verified doctors and hospital networks.',
+            features: [
+              'Secure donor-recipient matching',
+              'Doctor verification system',
+              'Hospital network integration'
+            ],
+            repo: 'https://github.com/Iam-jayant/Jeevan-Setu'
+          }
 
       {/* Payment Modal */}
       {showPaymentModal && (
