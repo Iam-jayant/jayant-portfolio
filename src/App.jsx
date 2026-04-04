@@ -330,11 +330,11 @@ function App() {
               </p>
 
               <p className="about-text">
-                I build across <strong>Web3, full-stack, and AI</strong>, working with smart contracts, backend systems, and frontend polish. I like understanding the <strong>whole stack,</strong> not just one layer.
+                I build across <strong>Web3, full-stack, and AI</strong>, working with smart contracts, backend systems, and frontend. I like understanding the <strong>whole stack,</strong> not just one layer.
               </p>
 
               <p className="about-text">
-                Hackathons shaped my mindset. Build fast, think deep, and deliver under pressure. I've been to <strong>15+ hackathons</strong>, won a few, and learned more there than any textbook.
+                Hackathons shaped my mindset. Build fast, think deep, and deliver under pressure. I've been to <strong>15+ hackathons</strong>, won a few, and learned more there than any textbook. <strong>I believe in Build what Matters</strong>
               </p>
 
               <p className="about-text">
