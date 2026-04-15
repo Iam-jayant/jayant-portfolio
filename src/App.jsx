@@ -514,7 +514,7 @@ function App() {
             <div className="community-grid">
               <a
                 className="community-card"
-                href="/walnut_narrative.html"
+                href="/walnut.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open Walnut article"
