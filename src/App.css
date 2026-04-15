@@ -103,7 +103,8 @@
 .back-button:focus-visible,
 .payment-option-card:focus-visible,
 .copy-button:focus-visible,
-.tea-button:focus-visible {
+.tea-button:focus-visible,
+.community-card:focus-visible {
   outline: 3px solid var(--accent-blue);
   outline-offset: 3px;
 }
@@ -471,9 +472,71 @@
 
 /* Community Section */
 .community-content {
-  text-align: center;
-  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.community-title {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  margin: 0 0 1.25rem 0;
+  text-transform: uppercase;
+}
+
+.community-grid {
+  display: grid;
+  gap: 16px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.community-card {
+  width: 100%;
+  background: white;
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.community-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.community-card-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+  background: white;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.community-card-copy {
+  min-width: 0;
+}
+
+.community-card-title {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.community-card-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--text-secondary);
+  margin: 0;
 }
 
 /* Responsive Design */
@@ -544,6 +607,7 @@
   .project-title {
     font-size: 1.15rem;
   }
+
 }
 
 /* Mobile */
@@ -818,6 +882,30 @@
   .achievement-link svg {
     width: 14px;
     height: 14px;
+  }
+
+  .community-card {
+    padding: 16px;
+    gap: 12px;
+    box-shadow: 3px 3px 0px 0px black;
+  }
+
+  .community-card:hover {
+    box-shadow: 3px 3px 0px 0px black;
+    transform: none;
+  }
+
+  .community-card-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .community-card-title {
+    font-size: 0.95rem;
+  }
+
+  .community-card-subtitle {
+    font-size: 0.82rem;
   }
 
   .footer {

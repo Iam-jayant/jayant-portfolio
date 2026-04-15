@@ -1,0 +1,277 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+  :root {
+    --serif: 'DM Serif Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --color-text-primary: #f3f3f5;
+    --color-text-secondary: #d0d0d8;
+    --color-text-tertiary: #8f8f99;
+    --color-border-tertiary: #2e2e36;
+    --color-border-secondary: #4f4f59;
+    --color-background-secondary: #18181d;
+    --color-background-success: #193427;
+    --color-text-success: #c6f0d9;
+    --color-background-info: #1d3048;
+    --color-text-info: #cfe3ff;
+    --border-radius-md: 12px;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background:
+      radial-gradient(1200px 600px at 50% -200px, #1b1b22 0%, transparent 65%),
+      #0c0c0f;
+    color: var(--color-text-primary);
+  }
+
+  body {
+    font-family: var(--sans);
+    display: flex;
+    justify-content: center;
+    padding: 56px 20px 72px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap {
+    width: min(980px, 100%);
+    text-align: left;
+  }
+
+  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 0.75rem; }
+  .headline { font-family: var(--serif); font-size: 52px; line-height: 1.15; color: var(--color-text-primary); margin-bottom: 0.65rem; font-weight: 400; }
+  .headline em { font-style: italic; color: var(--color-text-secondary); }
+  .sub {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    font-weight: 300;
+    max-width: 860px;
+  }
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.75rem 0; }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 1rem; }
+  .prose {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--color-text-primary);
+    font-weight: 300;
+    max-width: 860px;
+    margin: 0;
+  }
+  .prose strong { font-weight: 500; color: var(--color-text-primary); }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 1.5rem 0; }
+  .stat {
+    background: linear-gradient(180deg, #1a1a20 0%, #15151a 100%);
+    border-radius: var(--border-radius-md);
+    border: 1px solid #23232b;
+    padding: 1rem;
+  }
+  .stat-n { font-family: var(--serif); font-size: 26px; color: var(--color-text-primary); }
+  .stat-l { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.4; }
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.5rem 0; }
+  .feature {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    background: #131318;
+  }
+  .feature-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+  .feature-why { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .feature-tag { font-family: var(--mono); font-size: 10px; color: var(--color-text-tertiary); margin-top: 8px; }
+  .quote {
+    border-left: 2px solid var(--color-border-secondary);
+    border-right: 2px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 0.95rem 1.25rem;
+    margin: 1.5rem 0;
+    max-width: 860px;
+    background: #121217;
+  }
+  .quote-text { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--color-text-primary); font-style: italic; }
+  .quote-attr { font-size: 12px; color: var(--color-text-tertiary); margin-top: 6px; font-family: var(--mono); }
+  .wave-row { display: flex; flex-direction: column; gap: 8px; margin: 1.25rem 0; }
+  .wave {
+    display: block;
+    border: 1px solid #23232b;
+    border-radius: var(--border-radius-md);
+    background: #131318;
+    padding: 0.85rem 1rem;
+  }
+  .wave-num { font-family: var(--mono); font-size: 11px; color: var(--color-text-tertiary); padding-top: 2px; margin-bottom: 0.35rem; }
+  .wave-content { flex: 1; }
+  .wave-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .wave-desc { font-size: 12px; color: var(--color-text-secondary); margin-top: 3px; line-height: 1.5; }
+  .wave-badge { display: inline-block; font-family: var(--mono); font-size: 10px; padding: 2px 8px; border-radius: 3px; margin-top: 4px; }
+  .badge-won { background: var(--color-background-success); color: var(--color-text-success); }
+  .badge-next { background: var(--color-background-info); color: var(--color-text-info); }
+  .badge-future { background: var(--color-background-secondary); color: var(--color-text-tertiary); }
+  .stack-row { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 6px; margin: 1rem 0; }
+  .pill { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 3px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); }
+  .closing {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    font-style: italic;
+    margin: 1.5rem 0 0;
+    max-width: 860px;
+  }
+
+  @media (max-width: 900px) {
+    .headline { font-size: 42px; }
+    .stat-row,
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 32px 14px 48px; }
+    .headline { font-size: 34px; }
+    .sub,
+    .prose { font-size: 14px; }
+    .closing { font-size: 20px; }
+  }
+</style>
+<div class="wrap">
+  <p class="kicker">Project narrative — Walnut Protocol</p>
+  <h1 class="headline">DeFi runs in the open.<br><em>Walnut runs in the dark.</em></h1>
+  <p class="sub">A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted — and the protocol still works. Not despite encryption. Because of it.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">The problem</p>
+  <p class="prose">Every lending protocol on Ethereum today has the same architectural choice baked in from day one: transparency. Aave, Compound, Morpho — every position, every wallet, every pending liquidation is readable by anyone with a browser. That was a reasonable tradeoff in 2020. In 2026, it is a $500M/year extraction machine.</p>
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-n">$500M</div>
+      <div class="stat-l">annual MEV losses in DeFi — mostly from visible positions</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">$2.3B</div>
+      <div class="stat-l">institutional capital already seeking private DeFi rails (Q3 2025)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l">production FHE lending protocols on any EVM chain before Walnut (Unclaimed)</div>
+    </div>
+  </div>
+  <p class="prose">The institutions that would bring billions of dollars on-chain won't do it on transparent rails. Their compliance teams cannot allow it. Their risk books cannot be public. This is not a preference — it is a structural barrier. And no amount of ZK proofs or TEEs solves it at the DeFi primitive layer, because the lending logic itself still needs to operate on plaintext.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">The insight</p>
+  <p class="prose">In H1 2025, Fhenix published benchmarks showing their CoFHE coprocessor can handle <strong>tens of thousands of encrypted operations per second</strong> — fast enough for real lending throughput. For the first time, the cryptographic readiness is there. FHE is no longer theoretical.</p>
+  <div class="quote">
+    <p class="quote-text">"The next wave of DeFi needs privacy by default. In H1 2025, we showed that encrypted compute is no longer theoretical — it's live, scalable, and composable."</p>
+    <p class="quote-attr">— Fhenix Research, CCS 2025</p>
+  </div>
+  <p class="prose">The window is open. The protocols that build privacy into their core architecture now will outcompete those trying to retrofit it later. Walnut is built for this moment.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">What Walnut is</p>
+  <p class="prose">Walnut is a confidential lending and borrowing protocol where <strong>every sensitive variable lives and computes as encrypted state</strong>. Deposits, debt, collateral factors, health factors, interest rates, liquidation thresholds — all stored as <code style="font-family:var(--mono);font-size:12px;background:var(--color-background-secondary);padding:1px 5px;border-radius:3px;">euint64</code> ciphertexts. The blockchain sees encrypted values. Only the authorized wallet sees plaintext. The protocol still runs — it just runs blind.</p>
+  <p class="prose" style="margin-top:1rem;">The name is intentional. A walnut has a hard outer shell and an encrypted kernel inside. Nobody sees the kernel until you crack it. <strong>Wallet + Nut.</strong> Encrypted at the core.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">Core features — why each one needs FHE</p>
+  <div class="feature-grid">
+    <div class="feature">
+      <div class="feature-name">Encrypted health factor engine</div>
+      <div class="feature-why">Health factor = collateral/debt. Walnut evaluates this comparison entirely in FHE. Nobody knows you're at 1.05 until the protocol decides to act. MEV bots can't target you.</div>
+      <div class="feature-tag">FHE.div() + FHE.lt() on euint64</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Sealed-bid liquidation</div>
+      <div class="feature-why">Liquidators submit encrypted bids. CoFHE picks the minimum penalty bid via on-chain comparison — without any bid ever being visible. Borrower loses the least. For the first time, liquidation protects the borrower.</div>
+      <div class="feature-tag">publish-decrypt callback pattern</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Multi-wallet ENS collateral</div>
+      <div class="feature-why">Users aggregate collateral across wallets linked to an ENS name. CoFHE sums encrypted balances — unlinking wallets on-chain. Higher borrowing power, zero wallet exposure.</div>
+      <div class="feature-tag">FHE.add() across wallets + ENS</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Encrypted credit scoring</div>
+      <div class="feature-why">Protocol computes a credit tier from encrypted repayment history. Higher tier = lower collateral requirement. Under-collateralized lending unlocked for proven participants. Raw data never exposed.</div>
+      <div class="feature-tag">euint counter history + tier unlock</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">P2P encrypted lending</div>
+      <div class="feature-why">Lenders post encrypted offers: APR, tenor, size — all in ciphertext. Borrowers match without seeing terms until settlement. True private loan negotiation.</div>
+      <div class="feature-tag">FHERC20 + Privara SDK</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name">Selective institutional disclosure</div>
+      <div class="feature-why">Auditors receive a time-bounded decryption permit for aggregate pool solvency — not individual positions. Compliance without exposure. Fhenix's ACL system.</div>
+      <div class="feature-tag">FHE.allow() + permit system</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <p class="section-label">The "cannot exist on transparent rails" test</p>
+  <p class="prose">Fhenix evaluates submissions by one standard above all others: does this protocol <strong>require</strong> FHE, or is privacy cosmetic? Walnut passes this test three times over.</p>
+  <p class="prose" style="margin-top:1rem;"><strong>Sealed-bid liquidation</strong> is fundamentally broken on transparent rails. If bids are visible, liquidators simply outbid each other by 1 wei, and the borrower always pays maximum penalty. The mechanism only works because bids are encrypted.</p>
+  <p class="prose" style="margin-top:1rem;"><strong>Health factor computation</strong> requires operating on encrypted collateral and debt values simultaneously. If either is ever plaintext, front-runners can calculate your liquidation point before you can react.</p>
+  <p class="prose" style="margin-top:1rem;"><strong>Credit scoring from position history</strong> requires the scoring inputs to stay encrypted — otherwise the privacy you're trying to prove is destroyed in the act of proving it.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">Tech stack</p>
+  <div class="stack-row">
+    <span class="pill">@cofhe/sdk</span>
+    <span class="pill">@cofhe/react</span>
+    <span class="pill">cofhe-contracts / FHE.sol</span>
+    <span class="pill">FHERC20</span>
+    <span class="pill">@reineira-os/sdk (Privara)</span>
+    <span class="pill">Arbitrum Sepolia → mainnet</span>
+    <span class="pill">Next.js + wagmi</span>
+    <span class="pill">Hardhat + cofhe-hardhat-plugin</span>
+  </div>
+  <p class="prose">All FHE computation is offloaded to Fhenix's CoFHE coprocessor — an async queue-driven pipeline running on EigenLayer staking. Walnut's contracts stay EVM-compatible, written in standard Solidity. The complexity lives in CoFHE, not in the chain.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">Buildathon progress</p>
+  <div class="wave-row">
+    <div class="wave">
+      <div class="wave-num">Wave 1</div>
+      <div class="wave-content">
+        <div class="wave-title">Concept, architecture, encrypted deposit flow, UX</div>
+        <div class="wave-desc">Encrypted FHERC20 deposits, permit system, client-side unseal, full roadmap. Judges: "Love the UX. Project and roadmap clearly well thought through."</div>
+        <span class="wave-badge badge-won">won $500</span>
+      </div>
+    </div>
+    <div class="wave">
+      <div class="wave-num">Wave 2</div>
+      <div class="wave-content">
+        <div class="wave-title">Borrow flow + health factor engine + sealed-bid liquidation</div>
+        <div class="wave-desc">Implement publish-decrypt lifecycle (on-chain callback pattern). Full encrypted LTV computation. Sealed-bid auction with CoFHE comparison. New decrypt flow per updated docs.</div>
+        <span class="wave-badge badge-next">$5,000 pool</span>
+      </div>
+    </div>
+    <div class="wave">
+      <div class="wave-num">Wave 3</div>
+      <div class="wave-content">
+        <div class="wave-title">Multi-wallet ENS aggregation + encrypted credit scoring</div>
+        <div class="wave-desc">Marathon wave (April 8 – May 8). ENS subdomain isolation per market. Encrypted repayment history. Credit tier computation. P2P lending MVP.</div>
+        <span class="wave-badge badge-future">$12,000 pool</span>
+      </div>
+    </div>
+    <div class="wave">
+      <div class="wave-num">Wave 4–5</div>
+      <div class="wave-content">
+        <div class="wave-title">Institutional pools + selective disclosure + mainnet hardening</div>
+        <div class="wave-desc">Permissioned institutional pools with auditor decrypt permits. Privara SDK for private interest payouts. Position guard (encrypted stop-loss). Full protocol audit trail.</div>
+        <span class="wave-badge badge-future">$28,000+ pool</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <p class="closing">"Aave proved lending works on-chain. Walnut proves it works without anyone seeing anything."</p>
+  <br>
+  <br>
+  <p class="prose">
+    ~ Jayant Kurekar (Full-stack Developer)
+  </p>
+</div>

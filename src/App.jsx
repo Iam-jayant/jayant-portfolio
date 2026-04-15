@@ -141,6 +141,19 @@ function App() {
 
   // Projects Data
   const projects = [
+        {
+      title: 'Walnut',
+      year: '2026',
+      tags: ['Fhenix', 'SOLIDITY', 'TYPESCRIPT', 'EVM'],
+      description: 'A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted and the protocol still works. Not despite encryption. Because of it.',
+      features: [
+        'Fully Homomorphic Encryption : Computations happen on encrypted data.',
+        'Private State : Your positions, balances, and credit score are computed privately.',
+        'Private Liquidations : No public mempool. No liquidation sniping. No MEV extraction.',
+      ],
+      repo: 'https://github.com/Iam-jayant/walnut',
+      live: 'https://walnut-finance.vercel.app/'
+    },
     {
       title: 'ProofOS',
       year: '2026',
@@ -497,7 +510,30 @@ function App() {
       case 'community':
         return (
           <div className="community-content">
-            <p>Will be adding soon...</p>
+            <h2 className="community-title">More</h2>
+            <div className="community-grid">
+              <a
+                className="community-card"
+                href="/walnut_narrative.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Walnut article"
+                title="Open Walnut article in a new tab"
+              >
+                <img
+                  src="/walnut%20logo.png"
+                  alt="Walnut logo"
+                  className="community-card-logo"
+                  loading="lazy"
+                  width="60"
+                  height="60"
+                />
+                <div className="community-card-copy">
+                  <h3 className="community-card-title">Walnut</h3>
+                  <p className="community-card-subtitle">Confidential lending protocol narrative</p>
+                </div>
+              </a>
+            </div>
           </div>
         )
 
