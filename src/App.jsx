@@ -102,7 +102,7 @@ function App() {
   // Personal Data
   const personalInfo = {
     name: 'JAYANT',
-    techStack: 'WEB3 | FULL-STACK | AI | JAVA',
+    techStack: 'WEB3 | FULL-STACK | AI',
     github: 'Iam-jayant',
     linkedin: 'jayant-kurekar',
     email: 'jayantkurekar1@gmail.com',
