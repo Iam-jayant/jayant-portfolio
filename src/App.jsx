@@ -158,13 +158,15 @@ function App() {
     }
   ]
 
-  // Projects Data
+  // Projects Data — size drives bento grid: 'lg' = 2 cols, 'sm' = 1 col
+  // Order tuned for 3-col bento: lg+sm | sm+sm+sm | lg+sm | lg+sm | last stretches
   const projects = [
-        {
+    {
       title: 'Walnut',
       year: '2026',
       tags: ['Fhenix', 'SOLIDITY', 'TYPESCRIPT', 'EVM'],
       grantWinner: true,
+      size: 'lg',
       description: 'A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted and the protocol still works. Not despite encryption. Because of it.',
       features: [
         'Fully Homomorphic Encryption : Computations happen on encrypted data.',
@@ -178,6 +180,7 @@ function App() {
       title: 'ProofOS',
       year: '2026',
       tags: ['EVM', 'WEB3', 'ZK'],
+      size: 'sm',
       description: 'Privacy-preserving crypto income and tax proofs for India. ProofOS turns wallet activity into verifiable financial claims without exposing your full transaction history.',
       features: [
         'Privacy-first claim sharing (no raw wallet export required)',
@@ -188,10 +191,12 @@ function App() {
       repo: 'https://github.com/Iam-jayant/ProofOS',
       live: 'https://proofos-theta.vercel.app/'
     },
+    // ── Row 2: three smalls together ──
     {
       title: 'Blitzboard',
       year: '2026',
       tags: ['MONAD', 'SOLIDITY', 'TYPESCRIPT'],
+      size: 'sm',
       description: 'Real-time on-chain leaderboard + voting system built for hackathons. Human + AI Agents are voting parallel, designed to showcase Monad\'s speed with instant vote syncing and live ranking updates.',
       features: [
         'Live voting with instant leaderboard updates',
@@ -204,10 +209,38 @@ function App() {
       live: 'https://blitzboard.vercel.app/'
     },
     {
+      title: 'Code Vault',
+      year: '2025',
+      tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
+      size: 'sm',
+      description: 'Decentralized marketplace for premium code & developer bounties. Payments are x402 enabled and transactions are seamlessly fast.',
+      features: [
+        'Buy & Sell premium code repositories',
+        'Launch bounties for bug fixes, features, and code challenges',
+        'Trustless Payments with blockchain-backed rewards'
+      ],
+      live: 'https://codevault-asyncawait.netlify.app/'
+    },
+    {
+      title: 'SAAD - AI Sentiment Alert System',
+      year: '2025',
+      tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
+      size: 'sm',
+      description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
+      features: [
+        'Real-time social media monitoring',
+        'Advanced sentiment analysis',
+        'Slack & Email integration'
+      ],
+      repo: 'https://github.com/Iam-jayant/Agent-Saad'
+    },
+    // ── Row 3: lg + sm ──
+    {
       title: 'Bliss',
       year: '2026',
       tags: ['ALEO BLOCKCHAIN', 'WEB3', 'PRIVACY'],
       grantWinner: true,
+      size: 'lg',
       description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation.',
       features: [
         'Privacy-first identity & permission management',
@@ -219,22 +252,25 @@ function App() {
       live: 'https://bliss-dating.vercel.app/'
     },
     {
-      title: 'Code Vault',
+      title: 'CRYPT - NFT Gift Protocol',
       year: '2025',
-      tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
-      description: 'Decentralized marketplace for premium code & developer bounties. Payments are x402 enabled and transactions are seamlessly fast.',
+      tags: ['POLYGON', 'AI', 'NFT'],
+      size: 'sm',
+      description: 'Decentralized gifting platform combining AI-generated art with ERC-20 token vaults for personalized NFT gift cards.',
       features: [
-        'Buy & Sell premium code repositories',
-        'Launch bounties for bug fixes, features, and code challenges',
-        'Trustless Payments with blockchain-backed rewards'
+        'AI-generated personalized NFT art',
+        'ERC-20 token vault integration',
+        'Instant liquidation option'
       ],
-      live: 'https://codevault-asyncawait.netlify.app/'
+      repo: 'https://github.com/Iam-jayant/CRYPT'
     },
+    // ── Row 4: lg + sm ──
     {
       title: 'Ascend Protocol',
       year: '2025',
       tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
       hackathonWinner: true,
+      size: 'lg',
       description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
       features: [
         'Smart contract-based inheritance vaults',
@@ -244,33 +280,10 @@ function App() {
       repo: 'https://github.com/Iam-jayant'
     },
     {
-      title: 'SAAD - AI Sentiment Alert System',
-      year: '2025',
-      tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
-      description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
-      features: [
-        'Real-time social media monitoring',
-        'Advanced sentiment analysis',
-        'Slack & Email integration'
-      ],
-      repo: 'https://github.com/Iam-jayant/Agent-Saad'
-    },
-    {
-      title: 'CRYPT - NFT Gift Protocol',
-      year: '2025',
-      tags: ['POLYGON', 'AI', 'NFT'],
-      description: 'Decentralized gifting platform combining AI-generated art with ERC-20 token vaults for personalized NFT gift cards.',
-      features: [
-        'AI-generated personalized NFT art',
-        'ERC-20 token vault integration',
-        'Instant liquidation option'
-      ],
-      repo: 'https://github.com/Iam-jayant/CRYPT'
-    },
-    {
       title: 'EraseIt - Ultra-Fast Drive Wiper',
       year: '2025',
       tags: ['SOFTWARE', 'JAVA', 'JAVAFX'],
+      size: 'sm',
       description: 'High-Performance NIST SP 800-88 Compliant Data Destruction Solution ensuring 100% data unrecoverability.',
       features: [
         'NIST SP 800-88 compliant wiping',
@@ -279,10 +292,12 @@ function App() {
       ],
       repo: 'https://github.com/Iam-jayant/EraseIt'
     },
+    // ── Row 5: last item stretches ──
     {
       title: 'Jeevan Setu - Bridge of Life',
       year: '2025',
       tags: ['FULL-STACK', 'SUPABASE', 'NODE.JS'],
+      size: 'sm',
       description: 'Role-based platform securely connecting organ donors and recipients through verified doctors and hospital networks.',
       features: [
         'Secure donor-recipient matching',
@@ -482,55 +497,44 @@ function App() {
 
       case 'projects':
         return (
-          <div className="projects-grid">
+          <div className="proj-pool">
             {projects.map((project) => (
-              <div key={project.title} className={`project-card ${project.grantWinner ? 'grant-winner-card' : ''} ${project.hackathonWinner ? 'hackathon-winner-card' : ''}`}>
+              <div
+                key={project.title}
+                className={`proj-tile ${project.size === 'lg' ? 'proj-tile-lg' : 'proj-tile-sm'}`}
+              >
                 {project.grantWinner && (
-                  <div className="grant-winner-label">GRANT WINNER</div>
+                  <div className="bento-badge bento-badge-grant">GRANT WINNER</div>
                 )}
                 {project.hackathonWinner && (
-                  <div className="hackathon-winner-label">HACKATHON WINNER</div>
+                  <div className="bento-badge proj-badge-hack">HACKATHON WINNER</div>
                 )}
-                <div className="project-header">
-                  <div>
-                    <h3 className="project-title">{project.title}</h3>
-                    <div className="project-tags">
-                      {project.tags.map((tag) => (
-                        <span key={`${project.title}-${tag}`} className="project-tag">{tag}</span>
-                      ))}
-                    </div>
+                <div className="proj-tile-header">
+                  <div className="proj-tile-meta">
+                    <h3 className="proj-tile-title">{project.title}</h3>
+                    <span className="proj-tile-year">{project.year}</span>
                   </div>
-                  <div className="project-header-right">
-                    <span className="project-year">{project.year}</span>
+                  <div className="proj-tile-actions">
                     {project.repo && (
-                      <a
-                        href={project.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link-button"
-                        title="View Repository"
-                        aria-label={`Open ${project.title} repository`}
-                      >
-                        <Github size={18} />
+                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="View Repository" aria-label={`Open ${project.title} repository`}>
+                        <Github size={16} />
                       </a>
                     )}
                     {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link-button"
-                        title="Open Live Site"
-                        aria-label={`Open ${project.title} live site`}
-                      >
-                        <ExternalLink size={18} />
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="Open Live Site" aria-label={`Open ${project.title} live site`}>
+                        <ExternalLink size={16} />
                       </a>
                     )}
                   </div>
                 </div>
-                <p className="project-description">{project.description}</p>
+                <div className="proj-tile-tags">
+                  {project.tags.map((tag) => (
+                    <span key={`${project.title}-${tag}`} className="proj-tile-tag">{tag}</span>
+                  ))}
+                </div>
+                <p className="proj-tile-desc">{project.description}</p>
                 {project.features && (
-                  <ul className="project-features">
+                  <ul className="proj-tile-features">
                     {project.features.map((feature) => (
                       <li key={`${project.title}-${feature}`}>{feature}</li>
                     ))}

@@ -99,7 +99,7 @@
 
 .social-link:focus-visible,
 .nav-button:focus-visible,
-.project-link-button:focus-visible,
+.proj-tile-btn:focus-visible,
 .modal-close:focus-visible,
 .back-button:focus-visible,
 .payment-option-card:focus-visible,
@@ -286,152 +286,115 @@
   background-color: var(--bg-primary);
 }
 
-/* Projects Section */
-.projects-grid {
+/* ═══════════════════════════════════════════
+   Bento Pool — Projects Grid
+   ═══════════════════════════════════════════ */
+
+.proj-pool {
   display: grid;
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.project-card {
-  background-color: white;
-  border: 2px solid var(--border-color);
-  border-radius: 0;
-  padding: 20px;
-  box-shadow: var(--shadow);
-  transition: all 0.2s;
-  text-align: left;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  box-sizing: border-box;
+/* Last tile stretches to fill remaining row space */
+.proj-pool > .proj-tile-sm:last-child {
+  grid-column: 1 / -1;
+}
+
+.proj-tile {
   position: relative;
-}
-
-.project-card:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
-}
-
-.project-card.grant-winner-card {
-  border: 3px solid #FFD700;
-}
-
-.project-card.hackathon-winner-card {
-  border: 3px solid #87CEEB;
-}
-
-.grant-winner-label {
-  position: absolute;
-  top: -12px;
-  left: 0;
-  background-color: #FFD700;
-  color: #1a1a1a;
-  padding: 6px 16px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
+  background: white;
   border: 2px solid var(--border-color);
-  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
-  letter-spacing: 0.5px;
-}
-
-.hackathon-winner-label {
-  position: absolute;
-  top: -12px;
-  left: 0;
-  background-color: #87CEEB;
-  color: #1a1a1a;
-  padding: 6px 16px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  border: 2px solid var(--border-color);
-  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.3);
-  letter-spacing: 0.5px;
-}
-
-.project-header {
+  box-shadow: var(--shadow);
   display: flex;
-  justify-content: space-between;
-  align-items: start;
-  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: left;
+  overflow: hidden;
+}
+
+.proj-tile:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.proj-tile-lg {
+  grid-column: span 2;
+  padding: 28px 24px 22px;
   gap: 12px;
 }
 
-.project-header-right {
+.proj-tile-lg[class*='bento-badge-grant'] ~ *,
+.proj-tile-lg:has(.bento-badge-grant) {
+  border-left: 6px solid var(--accent-lavender);
+}
+
+.proj-tile-sm {
+  padding: 20px 18px 18px;
+}
+
+/* Hackathon winner badge variant */
+.proj-badge-hack {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: var(--accent-blue);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  font-size: 0.65rem;
+}
+
+/* ── Project tile internals ── */
+.proj-tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.proj-tile-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.proj-tile-title {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.proj-tile-year {
+  padding: 3px 8px;
+  border: 1.5px solid var(--border-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--accent-lavender);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.proj-tile-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
-.project-title {
-  font-family: 'Space Mono', monospace;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.project-year {
-  padding: 4px 8px;
-  border: 1px solid black;
-  border-radius: 0;
-  font-size: 0.85rem;
-  font-weight: bold;
-  background-color: var(--accent-lavender);
-  font-family: var(--font-mono);
-  white-space: nowrap;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.project-tag {
-  padding: 4px 10px;
-  border: 2px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.75rem;
-  background-color: var(--accent-green);
-}
-
-.project-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-}
-
-.project-features {
-  list-style: none;
-  padding: 0;
-}
-
-.project-features li {
-  padding-left: 20px;
-  position: relative;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.project-features li::before {
-  content: "\2192";
-  position: absolute;
-  left: 0;
-  font-weight: 700;
-}
-
-.project-link-button {
+.proj-tile-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   background: white;
   border: 2px solid var(--border-color);
   border-radius: 6px;
@@ -439,13 +402,57 @@
   text-decoration: none;
   transition: all 0.2s;
   box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
-  flex-shrink: 0;
 }
 
-.project-link-button:hover {
+.proj-tile-btn:hover {
   background: var(--accent-blue);
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.proj-tile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.proj-tile-tag {
+  padding: 3px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--accent-green);
+  font-family: var(--font-mono);
+}
+
+.proj-tile-desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.proj-tile-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.proj-tile-features li {
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.proj-tile-features li::before {
+  content: "\2192";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
 }
 
 /* ═══════════════════════════════════════════
@@ -694,7 +701,7 @@
 .github-calendar-container,
 .info-card,
 .stack-category,
-.project-card,
+.proj-tile,
 .bento-tile,
 .community-card,
 .modal-content {
@@ -796,8 +803,17 @@
     padding: 20px;
   }
 
-  .project-card {
-    padding: 18px;
+  .proj-pool {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .proj-tile-lg {
+    grid-column: span 2;
+  }
+
+  .proj-tile-title {
+    font-size: 1.05rem;
   }
 
   .bento-pool {
@@ -987,69 +1003,65 @@
     font-size: 0.8rem;
   }
 
-  .project-card {
-    padding: 16px;
-    box-shadow: 3px 3px 0px 0px black;
-    margin-bottom: 1rem;
+  /* Project pool — mobile */
+  .proj-pool {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
-  .project-card:hover {
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+  .proj-tile-lg {
+    grid-column: span 2;
+    padding: 20px 14px 16px;
+    box-shadow: 4px 4px 0px 0px black;
+  }
+
+  .proj-tile-lg:hover {
     transform: none;
+    box-shadow: 4px 4px 0px 0px black;
   }
 
-  .project-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
+  .proj-tile-sm {
+    padding: 14px 12px 12px;
+    box-shadow: 3px 3px 0px 0px black;
   }
 
-  .project-header-right {
-    width: 100%;
-    justify-content: flex-start;
+  .proj-tile-sm:hover {
+    transform: none;
+    box-shadow: 3px 3px 0px 0px black;
   }
 
-  .project-title {
-    font-size: 1.05rem;
-    margin-bottom: 6px;
+  .proj-tile-title {
+    font-size: 0.95rem;
   }
 
-  .project-year {
-    padding: 3px 7px;
+  .proj-tile-year {
+    font-size: 0.6rem;
+  }
+
+  .proj-tile-tag {
+    padding: 2px 7px;
+    font-size: 0.6rem;
+  }
+
+  .proj-tile-desc {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .proj-tile-features li {
     font-size: 0.75rem;
+    padding-left: 16px;
+    margin-bottom: 4px;
   }
 
-  .project-tags {
-    gap: 6px;
-    margin-bottom: 12px;
+  .proj-tile-btn {
+    width: 28px;
+    height: 28px;
   }
 
-  .project-tag {
-    padding: 3px 8px;
-    font-size: 0.7rem;
-  }
-
-  .project-description {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .project-features li {
-    font-size: 0.8rem;
-    margin-bottom: 6px;
-    padding-left: 18px;
-  }
-
-  .project-link-button {
-    width: 32px;
-    height: 32px;
-  }
-
-  .project-link-button svg {
-    width: 16px;
-    height: 16px;
+  .proj-tile-btn svg {
+    width: 14px;
+    height: 14px;
   }
 
   /* Bento pool — mobile */
