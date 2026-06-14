@@ -134,11 +134,11 @@ function App() {
   const stackData = [
     {
       category: 'Languages',
-      items: ['JavaScript', 'TypeScript', 'Solidity', 'Java', 'Python']
+      items: ['JavaScript', 'TypeScript', 'Solidity', 'Java', 'Python', 'SQL']
     },
     {
       category: 'Frameworks',
-      items: ['React', 'Next.js', 'Node.js', 'Express']
+      items: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'FastAPI']
     },
     {
       category: 'Web3',
@@ -153,8 +153,16 @@ function App() {
       items: ['PostgreSQL', 'MongoDB']
     },
     {
-      category: 'Tools & Others',
-      items: ['Git', 'Firebase', 'Privy', 'MCP', 'Supabase']
+      category: 'AI/ML',
+      items: ['LLM Integration', 'Agent Pipelines', 'RAG', 'Hugging Face', 'Scikit-learn']
+    },
+    {
+      category: 'Cloud',
+      items: ['Azure AI', 'Firebase', 'Docker']
+    },
+    {
+      category: 'Tools & Platforms',
+      items: ['Git', 'GitHub', 'Google Colab', 'Microsoft Office (Excel, Word, PowerPoint)', 'Privy', 'MCP', 'Supabase']
     }
   ]
 
@@ -432,13 +440,15 @@ function App() {
               <h3 className="github-calendar-title">
                 <Github size={24} /> Contributions
               </h3>
-              <GitHubCalendar
-                username={personalInfo.github}
-                blockSize={10}
-                blockMargin={4}
-                fontSize={14}
-                colorScheme="light"
-              />
+              <div className="github-calendar-wrapper">
+                <GitHubCalendar
+                  username={personalInfo.github}
+                  blockSize={10}
+                  blockMargin={4}
+                  fontSize={14}
+                  colorScheme="light"
+                />
+              </div>
             </div>
 
 
@@ -480,9 +490,12 @@ function App() {
         return (
           <div className="stack-section">
             <h2 className="stack-main-title">TECH STACK</h2>
-            <div className="stack-grid">
+            <div className="stack-list">
               {stackData.map((stack) => (
-                <div key={stack.category} className="stack-category">
+                <div
+                  key={stack.category}
+                  className={`stack-card stack-cat-${stack.category.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                >
                   <h3 className="stack-category-title">{stack.category}</h3>
                   <div className="stack-items">
                     {stack.items.map((item) => (

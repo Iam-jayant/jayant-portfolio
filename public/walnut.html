@@ -231,43 +231,6 @@
   <p class="prose">All FHE computation is offloaded to Fhenix's CoFHE coprocessor — an async queue-driven pipeline running on EigenLayer staking. Walnut's contracts stay EVM-compatible, written in standard Solidity. The complexity lives in CoFHE, not in the chain.</p>
 
   <div class="divider"></div>
-  <p class="section-label">Buildathon progress</p>
-  <div class="wave-row">
-    <div class="wave">
-      <div class="wave-num">Wave 1</div>
-      <div class="wave-content">
-        <div class="wave-title">Concept, architecture, encrypted deposit flow, UX</div>
-        <div class="wave-desc">Encrypted FHERC20 deposits, permit system, client-side unseal, full roadmap. Judges: "Love the UX. Project and roadmap clearly well thought through."</div>
-        <span class="wave-badge badge-won">won $500</span>
-      </div>
-    </div>
-    <div class="wave">
-      <div class="wave-num">Wave 2</div>
-      <div class="wave-content">
-        <div class="wave-title">Borrow flow + health factor engine + sealed-bid liquidation</div>
-        <div class="wave-desc">Implement publish-decrypt lifecycle (on-chain callback pattern). Full encrypted LTV computation. Sealed-bid auction with CoFHE comparison. New decrypt flow per updated docs.</div>
-        <span class="wave-badge badge-next">$5,000 pool</span>
-      </div>
-    </div>
-    <div class="wave">
-      <div class="wave-num">Wave 3</div>
-      <div class="wave-content">
-        <div class="wave-title">Multi-wallet ENS aggregation + encrypted credit scoring</div>
-        <div class="wave-desc">Marathon wave (April 8 – May 8). ENS subdomain isolation per market. Encrypted repayment history. Credit tier computation. P2P lending MVP.</div>
-        <span class="wave-badge badge-future">$12,000 pool</span>
-      </div>
-    </div>
-    <div class="wave">
-      <div class="wave-num">Wave 4–5</div>
-      <div class="wave-content">
-        <div class="wave-title">Institutional pools + selective disclosure + mainnet hardening</div>
-        <div class="wave-desc">Permissioned institutional pools with auditor decrypt permits. Privara SDK for private interest payouts. Position guard (encrypted stop-loss). Full protocol audit trail.</div>
-        <span class="wave-badge badge-future">$28,000+ pool</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
   <p class="closing">"Aave proved lending works on-chain. Walnut proves it works without anyone seeing anything."</p>
   <br>
   <br>

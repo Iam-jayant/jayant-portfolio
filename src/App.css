@@ -245,31 +245,46 @@
   word-spacing: 0.5px;
 }
 
-.stack-grid {
-  display: grid;
-  gap: 16px;
+.stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.stack-category {
+.stack-card {
   background-color: white;
   border: 2px solid var(--border-color);
   border-radius: 0;
-  padding: 20px;
+  padding: 24px;
   box-shadow: var(--shadow);
   text-align: left;
   width: 100%;
   box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stack-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
 }
 
 .stack-category-title {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.75rem;
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 12px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 3px 8px;
+  box-shadow: 2px 2px 0px 0px black;
+  margin: 0;
 }
 
 .stack-items {
@@ -282,9 +297,49 @@
   padding: 6px 12px;
   border: 2px solid var(--border-color);
   border-radius: 6px;
-  font-size: 0.85rem;
-  background-color: var(--bg-primary);
+  font-size: 0.82rem;
+  background-color: white;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  box-shadow: 2px 2px 0px 0px black;
+  transition: all 0.2s ease;
+  cursor: default;
 }
+
+.stack-item:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px 0px black;
+}
+
+/* Category Card Accent Borders */
+.stack-cat-languages { border-left: 6px solid var(--accent-pink); }
+.stack-cat-frameworks { border-left: 6px solid var(--accent-blue); }
+.stack-cat-web3 { border-left: 6px solid var(--accent-lavender); }
+.stack-cat-blockchain { border-left: 6px solid var(--accent-yellow); }
+.stack-cat-databases { border-left: 6px solid var(--accent-green); }
+.stack-cat-ai-ml { border-left: 6px solid var(--accent-pink); }
+.stack-cat-cloud { border-left: 6px solid var(--accent-blue); }
+.stack-cat-tools-platforms { border-left: 6px solid var(--accent-lavender); }
+
+/* Category Title Accent Backgrounds */
+.stack-cat-languages .stack-category-title { background-color: var(--accent-pink); }
+.stack-cat-frameworks .stack-category-title { background-color: var(--accent-blue); }
+.stack-cat-web3 .stack-category-title { background-color: var(--accent-lavender); }
+.stack-cat-blockchain .stack-category-title { background-color: var(--accent-yellow); }
+.stack-cat-databases .stack-category-title { background-color: var(--accent-green); }
+.stack-cat-ai-ml .stack-category-title { background-color: var(--accent-pink); }
+.stack-cat-cloud .stack-category-title { background-color: var(--accent-blue); }
+.stack-cat-tools-platforms .stack-category-title { background-color: var(--accent-lavender); }
+
+/* Category Pill Hover Accents */
+.stack-cat-languages .stack-item:hover { background-color: var(--accent-pink); }
+.stack-cat-frameworks .stack-item:hover { background-color: var(--accent-blue); }
+.stack-cat-web3 .stack-item:hover { background-color: var(--accent-lavender); }
+.stack-cat-blockchain .stack-item:hover { background-color: var(--accent-yellow); }
+.stack-cat-databases .stack-item:hover { background-color: var(--accent-green); }
+.stack-cat-ai-ml .stack-item:hover { background-color: var(--accent-pink); }
+.stack-cat-cloud .stack-item:hover { background-color: var(--accent-blue); }
+.stack-cat-tools-platforms .stack-item:hover { background-color: var(--accent-lavender); }
 
 /* ═══════════════════════════════════════════
    Bento Pool — Projects Grid
@@ -829,6 +884,10 @@
     font-size: 1.15rem;
   }
 
+  .stack-card {
+    padding: 20px 18px;
+    box-shadow: 3px 3px 0px 0px black;
+  }
 }
 
 /* Mobile */
@@ -878,6 +937,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.55rem;
     margin-bottom: 2rem;
+  }
+
+  .nav-tabs > .nav-button:last-child {
+    grid-column: 1 / -1;
   }
 
   .nav-button {
@@ -931,9 +994,17 @@
   }
 
   /* Make GitHub calendar scrollable on mobile */
-  .github-calendar-container > div {
+  .github-calendar-wrapper {
+    width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    display: block;
+  }
+
+  .github-calendar-wrapper > div {
+    min-width: 740px;
+    margin: 0 auto;
   }
 
   .info-grid {
@@ -984,14 +1055,20 @@
     height: 18px;
   }
 
-  .stack-category {
-    padding: 16px;
+  .stack-card {
+    padding: 16px 14px;
+    box-shadow: 3px 3px 0px 0px black;
+    gap: 12px;
+  }
+
+  .stack-card:hover {
+    transform: none;
     box-shadow: 3px 3px 0px 0px black;
   }
 
   .stack-category-title {
-    font-size: 0.7rem;
-    margin-bottom: 10px;
+    font-size: 0.72rem;
+    padding: 3px 6px;
   }
 
   .stack-items {
@@ -1000,17 +1077,23 @@
 
   .stack-item {
     padding: 5px 10px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    box-shadow: 2px 2px 0px 0px black;
+  }
+
+  .stack-item:hover {
+    transform: none;
+    box-shadow: 2px 2px 0px 0px black;
   }
 
   /* Project pool — mobile */
   .proj-pool {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .proj-tile-lg {
-    grid-column: span 2;
+    grid-column: 1 / -1;
     padding: 20px 14px 16px;
     box-shadow: 4px 4px 0px 0px black;
   }
@@ -1021,6 +1104,7 @@
   }
 
   .proj-tile-sm {
+    grid-column: 1 / -1;
     padding: 14px 12px 12px;
     box-shadow: 3px 3px 0px 0px black;
   }
@@ -1066,12 +1150,12 @@
 
   /* Bento pool — mobile */
   .bento-pool {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .bento-tile-lg {
-    grid-column: span 2;
+    grid-column: 1 / -1;
     padding: 22px 16px 18px;
     box-shadow: 4px 4px 0px 0px black;
   }
@@ -1090,6 +1174,7 @@
   }
 
   .bento-tile-sm {
+    grid-column: 1 / -1;
     padding: 14px 12px 12px;
     box-shadow: 3px 3px 0px 0px black;
   }
