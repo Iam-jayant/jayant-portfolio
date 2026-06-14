@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
 import './App.css'
@@ -12,6 +12,12 @@ function App() {
 
   const closeButtonRef = useRef(null)
   const teaButtonRef = useRef(null)
+
+  const closePaymentModal = useCallback(() => {
+    setShowPaymentModal(false)
+    setPaymentMethod(null)
+    setCopiedText('')
+  }, [])
 
   // Payment Data
   const paymentInfo = {
@@ -58,7 +64,7 @@ function App() {
       }
       setCopiedText(label)
       setTimeout(() => setCopiedText(''), 2000)
-    } catch (error) {
+    } catch {
       fallbackCopy()
       setCopiedText(label)
       setTimeout(() => setCopiedText(''), 2000)
@@ -71,7 +77,7 @@ function App() {
       // Try to open UPI app, but don't throw error if it fails
       try {
         window.location.href = paymentInfo.upi.deepLink
-      } catch (error) {
+      } catch {
         // If UPI app not available, show the QR/ID screen
         setPaymentMethod('upi')
       }
@@ -90,14 +96,28 @@ function App() {
   useEffect(() => {
     if (!showPaymentModal) return
     const previousOverflow = document.body.style.overflow
+    const returnFocusTo = teaButtonRef.current
     document.body.style.overflow = 'hidden'
     closeButtonRef.current?.focus()
 
     return () => {
       document.body.style.overflow = previousOverflow
-      teaButtonRef.current?.focus()
+      returnFocusTo?.focus()
     }
   }, [showPaymentModal])
+
+  useEffect(() => {
+    if (!showPaymentModal) return
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closePaymentModal()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [closePaymentModal, showPaymentModal])
 
   // Personal Data
   const personalInfo = {
@@ -107,8 +127,7 @@ function App() {
     linkedin: 'jayant-kurekar',
     email: 'jayantkurekar1@gmail.com',
     twitter: 'https://x.com/0xjayantxyz',
-    telegram: 'https://t.me/staticmelon',
-    about: "Hi, I'm Jayant."
+    telegram: 'https://t.me/staticmelon'
   }
 
   // Stack Data
@@ -145,6 +164,7 @@ function App() {
       title: 'Walnut',
       year: '2026',
       tags: ['Fhenix', 'SOLIDITY', 'TYPESCRIPT', 'EVM'],
+      grantWinner: true,
       description: 'A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted and the protocol still works. Not despite encryption. Because of it.',
       features: [
         'Fully Homomorphic Encryption : Computations happen on encrypted data.',
@@ -187,6 +207,7 @@ function App() {
       title: 'Bliss',
       year: '2026',
       tags: ['ALEO BLOCKCHAIN', 'WEB3', 'PRIVACY'],
+      grantWinner: true,
       description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation.',
       features: [
         'Privacy-first identity & permission management',
@@ -213,6 +234,7 @@ function App() {
       title: 'Ascend Protocol',
       year: '2025',
       tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
+      hackathonWinner: true,
       description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
       features: [
         'Smart contract-based inheritance vaults',
@@ -271,61 +293,98 @@ function App() {
     }
   ]
 
-  // Achievements Data
+  // Achievements Data — single mixed pool for bento grid
+  // size: 'lg' spans 2 cols, 'md' spans 1 col + taller, 'sm' is compact 1×1
   const achievements = [
     {
       name: 'Web3 Hackathon',
       organization: 'IIIT Nagpur',
+      winner: true,
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/61b0d91300168a44c4be6b2f15dfae1c27fa3d67/Hackathon/IIIT%20Nagpur%20Web3%20Hackathon.pdf'
+    },
+    {
+      name: 'Fhenix Grant Winner',
+      project: 'Walnut',
+      organization: 'Fhenix',
+      size: 'lg',
+      grant: true,
+      description: 'A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted and the protocol still works. It works on FHE, powered by Fhenix and settled on Privara.',
+      tags: ['FHE', 'Fhenix', 'DeFi', 'Privara'],
+      projectUrl: 'https://walnut-finance.vercel.app/',
+      repoUrl: 'https://github.com/Iam-jayant/walnut',
     },
     {
       name: 'Krutiverse Hackathon',
       organization: 'TGP Nagpur',
+      winner: true,
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/a8770f82b4972122a549eef912fd7491ab5a0c92/TGP%20krutiverese%20Hackathon.pdf'
     },
     {
       name: 'Hack On',
       organization: 'GDG on Campus GCOEN',
+      winner: true,
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/a8770f82b4972122a549eef912fd7491ab5a0c92/Hack%20On%20GCOEN.pdf'
     },
     {
       name: 'Healthcare Management System Hackathon',
       organization: 'FLUXUS - IIT Indore',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/a8770f82b4972122a549eef912fd7491ab5a0c92/iit%20indore.pdf'
+    },
+    {
+      name: 'Aleo Grant Winner',
+      project: 'Bliss',
+      organization: 'Aleo',
+      size: 'lg',
+      grant: true,
+      description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation. Built on Aleo blockchain.',
+      tags: ['Aleo', 'AI', 'Privacy', 'Web3'],
+      projectUrl: 'https://bliss-dating.vercel.app/',
+      repoUrl: 'https://github.com/Iam-jayant/bliss-dating-app',
     },
     {
       name: 'Code Of Phoenix',
       organization: 'IIIT Naya Raipur',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/a8770f82b4972122a549eef912fd7491ab5a0c92/code%20of%20phoenix.pdf'
     },
     {
       name: 'CIH 2.0 Nagpur',
       organization: 'Suryodaya College Nagpur',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/bb6c686d9ca212529ada114c12730cc3cfcd0bfe/cih%202.0%20certificate.pdf'
+    },
+    {
+      name: 'Ethglobal New Delhi',
+      organization: 'Ethereum Global',
+      size: 'sm',
+      certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/61b0d91300168a44c4be6b2f15dfae1c27fa3d67/Hackathon/Ethglobal%20New%20Delhi%202025.pdf'
     },
     {
       name: 'Devcraft Hackathon',
       organization: 'IIT Indore',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/61b0d91300168a44c4be6b2f15dfae1c27fa3d67/Hackathon/Devcraft%20Esummit%20IIT%20Indore.pdf'
     },
     {
       name: 'DSU Devhack 2.0',
       organization: 'DSU Bangaluru',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/61b0d91300168a44c4be6b2f15dfae1c27fa3d67/Hackathon/DSU%20Devhack%202.0.pdf'
-    },
-    {
-      name: 'Ethglobal New Delhi',
-      organization: 'Ethereum Global',
-      certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/61b0d91300168a44c4be6b2f15dfae1c27fa3d67/Hackathon/Ethglobal%20New%20Delhi%202025.pdf'
     },
     {
       name: 'Ecothon 4.0',
       organization: 'Sipna College Nagpur',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/61b0d91300168a44c4be6b2f15dfae1c27fa3d67/Hackathon/ecothon%204.0%20certificate%20jayant.pdf'
     },
     {
       name: 'Gradio Agents & MCP Hackathon',
       organization: 'Gradio & Hugging Face',
+      size: 'sm',
       certificateUrl: 'https://github.com/Iam-jayant/Certificates/blob/c27e53ac7355c016b58a05abe1a6eac48e7c5675/Certificate-AgentsMCP-Hackathon-1753275644066_6550.pdf'
     }
   ]
@@ -405,14 +464,11 @@ function App() {
       case 'stack':
         return (
           <div className="stack-section">
-            <h2 className="stack-main-title" style = {{color:'black', wordSpacing:'0.5px', paddingBottom:'30px',fontSize:'29px', fontFamily:'monospace',  }}>TECH STACK</h2>
+            <h2 className="stack-main-title">TECH STACK</h2>
             <div className="stack-grid">
               {stackData.map((stack) => (
                 <div key={stack.category} className="stack-category">
-                  <h3 className="stack-category-title">
-                    <span className="stack-icon">{stack.icon}</span>
-                    {stack.category}
-                  </h3>
+                  <h3 className="stack-category-title">{stack.category}</h3>
                   <div className="stack-items">
                     {stack.items.map((item) => (
                       <span key={item} className="stack-item">{item}</span>
@@ -428,7 +484,13 @@ function App() {
         return (
           <div className="projects-grid">
             {projects.map((project) => (
-              <div key={project.title} className="project-card">
+              <div key={project.title} className={`project-card ${project.grantWinner ? 'grant-winner-card' : ''} ${project.hackathonWinner ? 'hackathon-winner-card' : ''}`}>
+                {project.grantWinner && (
+                  <div className="grant-winner-label">GRANT WINNER</div>
+                )}
+                {project.hackathonWinner && (
+                  <div className="hackathon-winner-label">HACKATHON WINNER</div>
+                )}
                 <div className="project-header">
                   <div>
                     <h3 className="project-title">{project.title}</h3>
@@ -481,29 +543,52 @@ function App() {
 
       case 'achievements':
         return (
-          <div className="achievements-grid">
-            {achievements.map((achievement) => (
-              <div key={achievement.name} className="achievement-card">
-                <div className="achievement-icon">
-                  <Trophy size={20} />
+          <div className="bento-pool">
+            {achievements.map((item) =>
+              item.grant ? (
+                <div key={item.name} className="bento-tile bento-tile-lg">
+                  <div className="bento-badge bento-badge-grant">GRANT WINNER</div>
+                  <div className="bento-tile-header">
+                    <h3 className="bento-tile-project">{item.project}</h3>
+                    <span className="bento-tile-org">{item.organization}</span>
+                  </div>
+                  <p className="bento-tile-desc">{item.description}</p>
+                  <div className="bento-tile-tags">
+                    {item.tags.map((tag) => (
+                      <span key={`${item.project}-${tag}`} className="bento-tile-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <div className="bento-tile-links">
+                    {item.repoUrl && (
+                      <a href={item.repoUrl} target="_blank" rel="noopener noreferrer" className="bento-tile-link" aria-label={`View ${item.project} repository`}>
+                        <Github size={16} /> Repo
+                      </a>
+                    )}
+                    {item.projectUrl && (
+                      <a href={item.projectUrl} target="_blank" rel="noopener noreferrer" className="bento-tile-link" aria-label={`View ${item.project} live site`}>
+                        <ExternalLink size={16} /> Live
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <div className="achievement-content">
-                  <h3 className="achievement-name">{achievement.name}</h3>
-                  <p className="achievement-org">{achievement.organization}</p>
+              ) : (
+                <div key={item.name} className={`bento-tile bento-tile-sm ${item.winner ? 'bento-tile-winner' : ''}`}>
+                  <div className="bento-tile-top">
+                    <div className="bento-tile-icon">
+                      <Trophy size={16} />
+                    </div>
+                    {item.winner && <span className="bento-badge bento-badge-won">WON</span>}
+                  </div>
+                  <h4 className="bento-tile-name">{item.name}</h4>
+                  <span className="bento-tile-org-sm">{item.organization}</span>
+                  {item.certificateUrl && (
+                    <a href={item.certificateUrl} target="_blank" rel="noopener noreferrer" className="bento-tile-cert" aria-label={`View certificate for ${item.name}`}>
+                      <ExternalLink size={14} />
+                    </a>
+                  )}
                 </div>
-                {achievement.certificateUrl && (
-                  <a
-                    href={achievement.certificateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="achievement-link"
-                    aria-label={`View certificate for ${achievement.name}`}
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                )}
-              </div>
-            ))}
+              )
+            )}
           </div>
         )
 
@@ -655,7 +740,7 @@ function App() {
 
       {/* Payment Modal */}
       {showPaymentModal && (
-        <div className="modal-overlay" onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}>
+        <div className="modal-overlay" onClick={closePaymentModal}>
           <div
             className="modal-content"
             role="dialog"
@@ -665,7 +750,7 @@ function App() {
           >
             <button
               className="modal-close"
-              onClick={() => { setShowPaymentModal(false); setPaymentMethod(null); }}
+              onClick={closePaymentModal}
               aria-label="Close payment modal"
               ref={closeButtonRef}
             >
