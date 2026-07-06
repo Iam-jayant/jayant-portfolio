@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check } from 'lucide-react'
+import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check, GitMerge, Award, GitPullRequest } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
 import './App.css'
 
@@ -187,7 +187,8 @@ function App() {
     {
       title: 'ProofOS',
       year: '2026',
-      tags: ['EVM', 'WEB3', 'ZK'],
+      tags: ['EVM', 'WEB3', 'ZK', 'ETHMUMBAI WINNER'],
+      hackathonWinner: true,
       size: 'sm',
       description: 'Privacy-preserving crypto income and tax proofs for India. ProofOS turns wallet activity into verifiable financial claims without exposing your full transaction history.',
       features: [
@@ -338,6 +339,17 @@ function App() {
       repoUrl: 'https://github.com/Iam-jayant/walnut',
     },
     {
+      name: 'ETHMumbai Winner',
+      project: 'ProofOS',
+      organization: 'ETHmumbai',
+      winner: true,
+      size: 'lg',
+      description: 'Privacy-preserving crypto income and tax proofs for India. Winner at the prestigious ETHMumbai hackathon organized by ETHGlobal.',
+      tags: ['EVM', 'Web3', 'ZK', 'Privacy'],
+      projectUrl: 'https://proofos-theta.vercel.app/',
+      repoUrl: 'https://github.com/Iam-jayant/ProofOS',
+    },
+    {
       name: 'Krutiverse Hackathon',
       organization: 'TGP Nagpur',
       winner: true,
@@ -412,11 +424,70 @@ function App() {
     }
   ]
 
+  // Open Source Contributions Data
+  const openSourceContributions = [
+    {
+      repo: 'CodeLabsAI29/Inbox_OS',
+      repoUrl: 'https://github.com/CodeLabsAI29/Inbox_OS',
+      repoDescription: 'AI-powered email OS — decision + execution layer that understands, prioritizes, and routes emails automatically.',
+      pr: {
+        title: 'feat(security): implement security hardening and automated scanning',
+        number: 46,
+        url: 'https://github.com/CodeLabsAI29/Inbox_OS/pull/46',
+        issueRef: '#15',
+        status: 'merged',
+      },
+      changes: [
+        'Added eslint-plugin-security to backend and frontend',
+        'Added dedicated GitHub Actions security workflow',
+        'Added automated security scanning pipeline',
+      ],
+      tags: ['Security', 'CI/CD', 'GitHub Actions', 'ESLint'],
+    }
+  ]
+
   const renderContent = () => {
     switch (activeTab) {
       case 'about':
         return (
           <div className="about-content">
+            {/* Hero Highlights — flowing ticker */}
+            <div className="hero-ticker">
+              <div className="hero-ticker-track">
+                <a href="https://walnut-finance.vercel.app/" target="_blank" rel="noopener noreferrer" className="hero-ticker-item">
+                  <Award size={14} />
+                  <span>Fhenix Grant Winner — Walnut Protocol</span>
+                </a>
+                <span className="hero-ticker-dot">✦</span>
+                <a href="https://bliss-dating.vercel.app/" target="_blank" rel="noopener noreferrer" className="hero-ticker-item">
+                  <Award size={14} />
+                  <span>Aleo Grant Winner — Bliss</span>
+                </a>
+                <span className="hero-ticker-dot">✦</span>
+                <button className="hero-ticker-item" onClick={() => setActiveTab('opensource')}>
+                  <GitMerge size={14} />
+                  <span>Open Source Contributor — PR Merged</span>
+                </button>
+                <span className="hero-ticker-dot">✦</span>
+                {/* Duplicate for seamless loop */}
+                <a href="https://walnut-finance.vercel.app/" target="_blank" rel="noopener noreferrer" className="hero-ticker-item" tabIndex={-1} aria-hidden="true">
+                  <Award size={14} />
+                  <span>Fhenix Grant Winner — Walnut Protocol</span>
+                </a>
+                <span className="hero-ticker-dot" aria-hidden="true">✦</span>
+                <a href="https://bliss-dating.vercel.app/" target="_blank" rel="noopener noreferrer" className="hero-ticker-item" tabIndex={-1} aria-hidden="true">
+                  <Award size={14} />
+                  <span>Aleo Grant Winner — Bliss</span>
+                </a>
+                <span className="hero-ticker-dot" aria-hidden="true">✦</span>
+                <button className="hero-ticker-item" onClick={() => setActiveTab('opensource')} tabIndex={-1} aria-hidden="true">
+                  <GitMerge size={14} />
+                  <span>Open Source Contributor — PR Merged</span>
+                </button>
+                <span className="hero-ticker-dot" aria-hidden="true">✦</span>
+              </div>
+            </div>
+
             <div className="about-card">
               <h2 className="about-title">Hi, I'm Jayant.</h2>
 
@@ -562,9 +633,11 @@ function App() {
         return (
           <div className="bento-pool">
             {achievements.map((item) =>
-              item.grant ? (
-                <div key={item.name} className="bento-tile bento-tile-lg">
-                  <div className="bento-badge bento-badge-grant">GRANT WINNER</div>
+              item.size === 'lg' ? (
+                <div key={item.name} className={`bento-tile bento-tile-lg ${item.grant ? 'bento-tile-grant' : 'bento-tile-won-lg'}`}>
+                  <div className={`bento-badge ${item.grant ? 'bento-badge-grant' : 'bento-badge-won-lg'}`}>
+                    {item.grant ? 'GRANT WINNER' : 'HACKATHON WINNER'}
+                  </div>
                   <div className="bento-tile-header">
                     <h3 className="bento-tile-project">{item.project}</h3>
                     <span className="bento-tile-org">{item.organization}</span>
@@ -609,32 +682,147 @@ function App() {
           </div>
         )
 
-      case 'community':
+      case 'opensource':
         return (
-          <div className="community-content">
-            <h2 className="community-title">More</h2>
-            <div className="community-grid">
-              <a
-                className="community-card"
-                href="/walnut.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Walnut article"
-                title="Open Walnut article in a new tab"
-              >
-                <img
-                  src="/walnut%20logo.png"
-                  alt="Walnut logo"
-                  className="community-card-logo"
-                  loading="lazy"
-                  width="60"
-                  height="60"
-                />
-                <div className="community-card-copy">
-                  <h3 className="community-card-title">Walnut</h3>
-                  <p className="community-card-subtitle">Confidential lending protocol narrative</p>
+          <div className="os-section">
+            <h2 className="os-main-title">OPEN SOURCE</h2>
+            <p className="os-subtitle">Contributions to real-world projects. Code that ships in production.</p>
+
+            <div className="os-contributions">
+              {openSourceContributions.map((contrib) => (
+                <div key={`${contrib.repo}-${contrib.pr.number}`} className="os-contribution-card">
+                  <div className="os-card-header">
+                    <div className="os-repo-info">
+                      <Github size={18} />
+                      <a
+                        href={contrib.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="os-repo-name"
+                        aria-label={`View ${contrib.repo} repository`}
+                      >
+                        {contrib.repo}
+                      </a>
+                    </div>
+                    <span className="os-merged-badge">
+                      <GitMerge size={14} /> MERGED
+                    </span>
+                  </div>
+
+                  <p className="os-repo-desc">{contrib.repoDescription}</p>
+
+                  <div className="os-pr-block">
+                    <div className="os-pr-header">
+                      <GitPullRequest size={16} />
+                      <a
+                        href={contrib.pr.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="os-pr-title"
+                        aria-label={`View pull request #${contrib.pr.number}`}
+                      >
+                        {contrib.pr.title}
+                      </a>
+                      <span className="os-pr-number">#{contrib.pr.number}</span>
+                    </div>
+
+                    <ul className="os-changes-list">
+                      {contrib.changes.map((change) => (
+                        <li key={change}>{change}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="os-card-tags">
+                    {contrib.tags.map((tag) => (
+                      <span key={tag} className="os-tag">{tag}</span>
+                    ))}
+                  </div>
+
+                  <div className="os-card-links">
+                    <a href={contrib.repoUrl} target="_blank" rel="noopener noreferrer" className="os-card-link" aria-label={`View ${contrib.repo} repository`}>
+                      <Github size={16} /> Repository
+                    </a>
+                    <a href={contrib.pr.url} target="_blank" rel="noopener noreferrer" className="os-card-link os-card-link-pr" aria-label={`View pull request #${contrib.pr.number}`}>
+                      <GitMerge size={16} /> Pull Request
+                    </a>
+                  </div>
                 </div>
-              </a>
+              ))}
+            </div>
+
+            {/* Writing / Narratives */}
+            <h3 className="os-writing-title">WRITING</h3>
+            <div className="os-contributions">
+              <div className="os-contribution-card os-writing-card">
+                <div className="os-card-header">
+                  <div className="os-repo-info">
+                    <img
+                      src="/walnut%20logo.png"
+                      alt="Walnut logo"
+                      className="os-writing-logo"
+                      loading="lazy"
+                      width="24"
+                      height="24"
+                    />
+                    <a
+                      href="https://github.com/Iam-jayant/walnut"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="os-repo-name"
+                      aria-label="View Walnut repository"
+                    >
+                      Iam-jayant/walnut
+                    </a>
+                  </div>
+                  <span className="os-badge-writing">
+                    <BookOpen size={12} /> NARRATIVE
+                  </span>
+                </div>
+
+                <p className="os-repo-desc">
+                  Confidential lending protocol narrative. A deep dive into Fully Homomorphic Encryption (FHE) in DeFi, explaining how positions remain private while liquidations stay secure.
+                </p>
+
+                <div className="os-pr-block">
+                  <div className="os-pr-header">
+                    <BookOpen size={16} />
+                    <a
+                      href="/walnut.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="os-pr-title"
+                      aria-label="Read Walnut Narrative Article"
+                    >
+                      Walnut: Confidential Lending Narrative
+                    </a>
+                  </div>
+                  <ul className="os-changes-list-writing">
+                    <li>Homomorphic Encryption integration details</li>
+                    <li>Private liquidations & avoiding MEV extraction</li>
+                    <li>Health factor calculations under encryption</li>
+                  </ul>
+                </div>
+
+                <div className="os-card-tags">
+                  <span className="os-tag-writing">Fhenix</span>
+                  <span className="os-tag-writing">Solidity</span>
+                  <span className="os-tag-writing">FHE</span>
+                  <span className="os-tag-writing">Privacy</span>
+                </div>
+
+                <div className="os-card-links">
+                  <a href="https://github.com/Iam-jayant/walnut" target="_blank" rel="noopener noreferrer" className="os-card-link" aria-label="View Walnut repository">
+                    <Github size={16} /> Repository
+                  </a>
+                  <a href="/walnut.html" target="_blank" rel="noopener noreferrer" className="os-card-link os-card-link-writing" aria-label="Read Walnut article">
+                    <BookOpen size={16} /> Read Article
+                  </a>
+                  <a href="https://walnut-finance.vercel.app/" target="_blank" rel="noopener noreferrer" className="os-card-link" aria-label="View Walnut Live Site">
+                    <ExternalLink size={16} /> Live Site
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         )
@@ -739,10 +927,10 @@ function App() {
           Achievements
         </button>
         <button
-          className={`nav-button ${activeTab === 'community' ? 'active' : ''}`}
-          onClick={() => setActiveTab('community')}
+          className={`nav-button ${activeTab === 'opensource' ? 'active' : ''}`}
+          onClick={() => setActiveTab('opensource')}
         >
-          More
+          Open Source
         </button>
       </div>
 

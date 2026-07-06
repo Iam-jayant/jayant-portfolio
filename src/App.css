@@ -384,7 +384,7 @@
 
 .proj-tile-lg[class*='bento-badge-grant'] ~ *,
 .proj-tile-lg:has(.bento-badge-grant) {
-  border-left: 6px solid var(--accent-lavender);
+  border-left: 6px solid var(--accent-yellow);
 }
 
 .proj-tile-sm {
@@ -517,6 +517,7 @@
 .bento-pool {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
   gap: 14px;
   width: 100%;
   box-sizing: border-box;
@@ -546,7 +547,6 @@
   grid-column: span 2;
   padding: 28px 24px 22px;
   gap: 12px;
-  border-left: 6px solid var(--accent-lavender);
 }
 
 /* ── Small tile (hackathons) ── */
@@ -555,8 +555,8 @@
 }
 
 .bento-tile-winner {
-  border-color: var(--accent-blue);
-  border-width: 3px;
+  border-color: var(--border-color);
+  border-width: 2px;
 }
 
 /* ── Badges ── */
@@ -572,18 +572,37 @@
   position: absolute;
   top: -1px;
   right: -1px;
-  background: var(--accent-lavender);
+  background: var(--accent-yellow);
   color: var(--text-primary);
   padding: 6px 14px;
   font-size: 0.65rem;
 }
 
 .bento-badge-won {
-  background: var(--accent-blue);
+  background: var(--accent-yellow);
   color: var(--text-primary);
   padding: 2px 8px;
   font-size: 0.6rem;
   border-width: 1.5px;
+}
+
+.bento-tile-won-lg {
+  /* Dual tone: inherits standard border */
+}
+
+.bento-badge-won-lg {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: var(--accent-yellow);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 2px solid var(--border-color);
+  line-height: 1;
 }
 
 /* ── Grant tile internals ── */
@@ -656,7 +675,7 @@
 }
 
 .bento-tile-link:hover {
-  background: var(--accent-blue);
+  background: var(--accent-yellow);
   transform: translate(-1px, -1px);
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
 }
@@ -671,7 +690,7 @@
 .bento-tile-icon {
   width: 30px;
   height: 30px;
-  background: var(--accent-pink);
+  background: white;
   border: 2px solid var(--border-color);
   border-radius: 6px;
   display: flex;
@@ -798,6 +817,354 @@
   margin: 0;
 }
 
+/* ═══════════════════════════════════════════
+   Hero Ticker — flowing highlights
+   ═══════════════════════════════════════════ */
+
+.hero-ticker {
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  background: white;
+  box-shadow: 3px 3px 0px 0px black;
+  margin-bottom: 28px;
+}
+
+.hero-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  animation: ticker-scroll 20s linear infinite;
+}
+
+.hero-ticker:hover .hero-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.hero-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.hero-ticker-item:hover {
+  color: #16A34A;
+}
+
+.hero-ticker-dot {
+  padding: 0 6px;
+  font-size: 0.6rem;
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   Open Source Section
+   ═══════════════════════════════════════════ */
+
+.os-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.os-main-title {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+.os-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0 0 28px 0;
+  opacity: 0.7;
+}
+
+.os-contributions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.os-contribution-card {
+  background: white;
+  border: 3px solid var(--border-color);
+  border-left: 6px solid var(--accent-green);
+  padding: 28px 24px;
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.os-contribution-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.os-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.os-repo-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.os-repo-name {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.os-repo-name:hover {
+  border-bottom-color: var(--accent-green);
+}
+
+.os-merged-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  background: var(--accent-green);
+  border: 2px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.os-repo-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.os-pr-block {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  padding: 18px;
+}
+
+.os-pr-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.os-pr-header svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-green);
+}
+
+.os-pr-title {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.os-pr-title:hover {
+  text-decoration: underline;
+}
+
+.os-pr-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.os-changes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.os-changes-list li {
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.os-changes-list li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+}
+
+.os-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.os-tag {
+  padding: 3px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--accent-green);
+  font-family: var(--font-mono);
+}
+
+.os-card-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.os-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background: white;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s;
+}
+
+.os-card-link:hover {
+  background: var(--accent-blue);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.os-card-link-pr:hover {
+  background: var(--accent-green);
+}
+
+.os-writing-card {
+  border-left-color: var(--accent-lavender);
+}
+
+.os-writing-logo {
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  background: white;
+  flex-shrink: 0;
+  display: block;
+}
+
+.os-badge-writing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  background: var(--accent-lavender);
+  border: 2px solid var(--border-color);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.os-changes-list-writing {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.os-changes-list-writing li {
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.os-changes-list-writing li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--accent-lavender);
+  font-family: var(--font-mono);
+}
+
+.os-tag-writing {
+  padding: 3px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--accent-lavender);
+  font-family: var(--font-mono);
+}
+
+.os-card-link-writing:hover {
+  background: var(--accent-lavender);
+}
+
+.os-writing-title {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-color);
+  text-transform: uppercase;
+}
+
 /* Responsive Design */
 
 /* Tablet and below */
@@ -887,6 +1254,18 @@
   .stack-card {
     padding: 20px 18px;
     box-shadow: 3px 3px 0px 0px black;
+  }
+
+  .hero-ticker {
+    box-shadow: 2px 2px 0px 0px black;
+  }
+
+  .os-contribution-card {
+    padding: 24px 20px;
+  }
+
+  .os-repo-name {
+    font-size: 1.05rem;
   }
 }
 
@@ -1219,6 +1598,89 @@
   .footer {
     font-size: 0.65rem;
     padding-bottom: 30px;
+  }
+
+  /* Hero ticker — mobile */
+  .hero-ticker {
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 0px 0px black;
+  }
+
+  .hero-ticker-item {
+    padding: 10px 14px;
+    font-size: 0.72rem;
+  }
+
+  /* Open source — mobile */
+  .os-main-title {
+    font-size: 1.4rem;
+  }
+
+  .os-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .os-contribution-card {
+    padding: 20px 14px;
+    box-shadow: 4px 4px 0px 0px black;
+  }
+
+  .os-contribution-card:hover {
+    transform: none;
+    box-shadow: 4px 4px 0px 0px black;
+  }
+
+  .os-repo-name {
+    font-size: 0.95rem;
+  }
+
+  .os-merged-badge {
+    font-size: 0.6rem;
+    padding: 3px 8px;
+  }
+
+  .os-repo-desc {
+    font-size: 0.82rem;
+  }
+
+  .os-pr-block {
+    padding: 14px 12px;
+  }
+
+  .os-pr-title {
+    font-size: 0.8rem;
+  }
+
+  .os-pr-number {
+    font-size: 0.68rem;
+  }
+
+  .os-changes-list li {
+    font-size: 0.75rem;
+    padding-left: 16px;
+  }
+
+  .os-card-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .os-card-link {
+    padding: 8px 14px;
+    font-size: 0.72rem;
+    box-shadow: 2px 2px 0px 0px black;
+    justify-content: center;
+  }
+
+  .os-card-link:hover {
+    transform: none;
+    box-shadow: 2px 2px 0px 0px black;
+  }
+
+  .os-writing-title {
+    font-size: 1rem;
+    margin-top: 8px;
   }
 }
 
