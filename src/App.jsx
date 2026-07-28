@@ -1,7 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Linkedin, Github, Mail, Twitter, Send, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check, GitMerge, Award, GitPullRequest } from 'lucide-react'
+import { Linkedin, Github, Mail, Twitter, Send, FileText, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check, GitMerge, Award, GitPullRequest } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
 import './App.css'
+
+const XLogo = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
 
 function App() {
   const [activeTab, setActiveTab] = useState('about')
@@ -127,7 +133,8 @@ function App() {
     linkedin: 'jayant-kurekar',
     email: 'jayantkurekar1@gmail.com',
     twitter: 'https://x.com/0xjayantxyz',
-    telegram: 'https://t.me/staticmelon'
+    telegram: 'https://t.me/staticmelon',
+    resume: '/jayant_fullstack_resume.pdf'
   }
 
   // Stack Data
@@ -858,17 +865,35 @@ function App() {
               rel="noopener noreferrer"
               className="social-link"
               aria-label="LinkedIn profile"
+              title="LinkedIn profile"
+              style={{ '--hover-bg': 'var(--accent-blue)' }}
             >
-              <Linkedin size={20} />
+              <span className="social-link-icon"><Linkedin size={20} /></span>
+              <span className="social-link-handle">@{personalInfo.linkedin}</span>
             </a>
             <a
-              href={personalInfo.twitter !== '#' ? personalInfo.twitter : `https://twitter.com`}
+              href={`https://github.com/${personalInfo.github}`}
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
-              aria-label="Twitter profile"
+              aria-label="GitHub profile"
+              title="GitHub profile"
+              style={{ '--hover-bg': 'var(--accent-green)' }}
             >
-              <Twitter size={20} />
+              <span className="social-link-icon"><Github size={20} /></span>
+              <span className="social-link-handle">@{personalInfo.github}</span>
+            </a>
+            <a
+              href={personalInfo.twitter !== '#' ? personalInfo.twitter : 'https://x.com/0xjayantxyz'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              aria-label="X profile"
+              title="X profile"
+              style={{ '--hover-bg': 'var(--accent-yellow)' }}
+            >
+              <span className="social-link-icon"><XLogo size={18} /></span>
+              <span className="social-link-handle">@0xjayantxyz</span>
             </a>
             <a
               href={personalInfo.telegram}
@@ -877,24 +902,32 @@ function App() {
               className="social-link"
               aria-label="Telegram"
               title="Telegram"
+              style={{ '--hover-bg': 'var(--accent-lavender)' }}
             >
-              <Send size={20} />
-            </a>
-            <a
-              href={`https://github.com/${personalInfo.github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="GitHub profile"
-            >
-              <Github size={20} />
+              <span className="social-link-icon"><Send size={20} /></span>
+              <span className="social-link-handle">@staticmelon</span>
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
               className="social-link"
               aria-label="Send email"
+              title="Send email"
+              style={{ '--hover-bg': 'var(--accent-pink)' }}
             >
-              <Mail size={20} />
+              <span className="social-link-icon"><Mail size={20} /></span>
+              <span className="social-link-handle">{personalInfo.email}</span>
+            </a>
+            <a
+              href={personalInfo.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              aria-label="Resume"
+              title="View Resume"
+              style={{ '--hover-bg': 'var(--accent-yellow)' }}
+            >
+              <span className="social-link-icon"><FileText size={20} /></span>
+              <span className="social-link-handle">Resume</span>
             </a>
           </div>
         </div>
