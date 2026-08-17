@@ -930,7 +930,7 @@ function App() {
               <span className="social-link-handle">Resume</span>
             </a>
             <a
-              href="/SEMINAR%20PPT.pptx"
+              href="/seminar_ppt.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
