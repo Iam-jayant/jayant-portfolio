@@ -929,6 +929,19 @@ function App() {
               <span className="social-link-icon"><FileText size={20} /></span>
               <span className="social-link-handle">Resume</span>
             </a>
+            <a
+              href="/SEMINAR%20PPT.pptx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+              aria-label="Seminar PPT"
+              title="Download Seminar PPT"
+              style={{ '--hover-bg': 'var(--accent-lavender)' }}
+              download
+            >
+              <span className="social-link-icon"><Monitor size={20} /></span>
+              <span className="social-link-handle">Seminar PPT</span>
+            </a>
           </div>
         </div>
       </div>
