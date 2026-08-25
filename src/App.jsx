@@ -174,8 +174,40 @@ function App() {
   ]
 
   // Projects Data — size drives bento grid: 'lg' = 2 cols, 'sm' = 1 col
-  // Order tuned for 3-col bento: lg+sm | sm+sm+sm | lg+sm | lg+sm | last stretches
+  // Order tuned for 3-col bento: lg+sm | lg+sm | sm+sm+sm | lg+sm | lg+sm
   const projects = [
+    // ── Row 1: lg + sm ──
+    {
+      title: 'InfrGate',
+      year: '2026',
+      tags: ['AI', 'INFRASTRUCTURE', 'BACKEND'],
+      size: 'lg',
+      description: 'OpenAI-compatible backend gateway that centralizes LLM infrastructure. Client applications simply point their SDKs to the InfrGate URL and gain automatic failover, cost controls, and tenant isolation.',
+      features: [
+        'API authentication and tenant isolation',
+        'Provider selection and intelligent routing',
+        'Automatic failover for high availability',
+        'Rate limits, spend caps, and usage accounting'
+      ],
+      repo: 'https://github.com/Iam-jayant/Infrgate',
+      live: 'https://infrgate.vercel.app'
+    },
+    {
+      title: 'ProofOS',
+      year: '2026',
+      tags: ['EVM', 'WEB3', 'ZK', 'ETHMUMBAI WINNER'],
+      hackathonWinner: true,
+      size: 'sm',
+      description: 'Privacy-preserving crypto income and tax proofs for India. ProofOS turns wallet activity into verifiable financial claims without exposing your full transaction history.',
+      features: [
+        'Privacy-first claim sharing',
+        'Multi-wallet workflows with ENS',
+        'Certificate generation'
+      ],
+      repo: 'https://github.com/Iam-jayant/ProofOS',
+      live: 'https://proofos-theta.vercel.app/'
+    },
+    // ── Row 2: lg + sm ──
     {
       title: 'Walnut',
       year: '2026',
@@ -192,38 +224,20 @@ function App() {
       live: 'https://walnut-finance.vercel.app/'
     },
     {
-      title: 'ProofOS',
-      year: '2026',
-      tags: ['EVM', 'WEB3', 'ZK', 'ETHMUMBAI WINNER'],
-      hackathonWinner: true,
-      size: 'sm',
-      description: 'Privacy-preserving crypto income and tax proofs for India. ProofOS turns wallet activity into verifiable financial claims without exposing your full transaction history.',
-      features: [
-        'Privacy-first claim sharing (no raw wallet export required)',
-        'Multi-wallet workflows with ENS club integration',
-        'Certificate generation with ledger commitment and verification references',
-        'Optional decentralized publishing integrations (for configured environments)'
-      ],
-      repo: 'https://github.com/Iam-jayant/ProofOS',
-      live: 'https://proofos-theta.vercel.app/'
-    },
-    // ── Row 2: three smalls together ──
-    {
       title: 'Blitzboard',
       year: '2026',
       tags: ['MONAD', 'SOLIDITY', 'TYPESCRIPT'],
       size: 'sm',
-      description: 'Real-time on-chain leaderboard + voting system built for hackathons. Human + AI Agents are voting parallel, designed to showcase Monad\'s speed with instant vote syncing and live ranking updates.',
+      description: 'Real-time on-chain leaderboard + voting system built for hackathons.',
       features: [
-        'Live voting with instant leaderboard updates',
-        'AI agents evaluating projects on code quality and plagiarism',
-        'Real-time project ranking & score aggregation',
-        'Transparent on-chain vote storage (tamper-proof)',
-        'Built for hackathons, judges + participant voting support'
+        'Live voting with instant updates',
+        'AI agents evaluating projects',
+        'On-chain vote storage'
       ],
       repo: 'https://github.com/Iam-jayant/blitzboard',
       live: 'https://blitzboard.vercel.app/'
     },
+    // ── Row 3: three smalls together ──
     {
       title: 'Code Vault',
       year: '2025',
@@ -250,7 +264,20 @@ function App() {
       ],
       repo: 'https://github.com/Iam-jayant/Agent-Saad'
     },
-    // ── Row 3: lg + sm ──
+    {
+      title: 'CRYPT - NFT Gift Protocol',
+      year: '2025',
+      tags: ['POLYGON', 'AI', 'NFT'],
+      size: 'sm',
+      description: 'Decentralized gifting platform combining AI-generated art with ERC-20 token vaults for personalized NFT gift cards.',
+      features: [
+        'AI-generated personalized NFT art',
+        'ERC-20 token vault integration',
+        'Instant liquidation option'
+      ],
+      repo: 'https://github.com/Iam-jayant/CRYPT'
+    },
+    // ── Row 4: lg + sm ──
     {
       title: 'Bliss',
       year: '2026',
@@ -268,19 +295,19 @@ function App() {
       live: 'https://bliss-dating.vercel.app/'
     },
     {
-      title: 'CRYPT - NFT Gift Protocol',
+      title: 'EraseIt - Ultra-Fast Drive Wiper',
       year: '2025',
-      tags: ['POLYGON', 'AI', 'NFT'],
+      tags: ['SOFTWARE', 'JAVA', 'JAVAFX'],
       size: 'sm',
-      description: 'Decentralized gifting platform combining AI-generated art with ERC-20 token vaults for personalized NFT gift cards.',
+      description: 'High-Performance NIST SP 800-88 Compliant Data Destruction Solution ensuring 100% data unrecoverability.',
       features: [
-        'AI-generated personalized NFT art',
-        'ERC-20 token vault integration',
-        'Instant liquidation option'
+        'NIST SP 800-88 compliant wiping',
+        'Multi-pass secure deletion',
+        'Fast performance optimization'
       ],
-      repo: 'https://github.com/Iam-jayant/CRYPT'
+      repo: 'https://github.com/Iam-jayant/EraseIt'
     },
-    // ── Row 4: lg + sm ──
+    // ── Row 5: lg + sm ──
     {
       title: 'Ascend Protocol',
       year: '2025',
@@ -295,20 +322,6 @@ function App() {
       ],
       repo: 'https://github.com/Iam-jayant'
     },
-    {
-      title: 'EraseIt - Ultra-Fast Drive Wiper',
-      year: '2025',
-      tags: ['SOFTWARE', 'JAVA', 'JAVAFX'],
-      size: 'sm',
-      description: 'High-Performance NIST SP 800-88 Compliant Data Destruction Solution ensuring 100% data unrecoverability.',
-      features: [
-        'NIST SP 800-88 compliant wiping',
-        'Multi-pass secure deletion',
-        'Fast performance optimization'
-      ],
-      repo: 'https://github.com/Iam-jayant/EraseIt'
-    },
-    // ── Row 5: last item stretches ──
     {
       title: 'Jeevan Setu - Bridge of Life',
       year: '2025',
@@ -499,19 +512,19 @@ function App() {
               <h2 className="about-title">Hi, I'm Jayant.</h2>
 
               <p className="about-text">
-                I'm an engineering student and a developer. I genuinely enjoy shipping things that actually work.
+                I'm a Full-Stack Software Engineer. I genuinely enjoy building systems that actually work <br />from infrastructure to complete products.
               </p>
 
               <p className="about-text">
-                I build across <strong>Web3, full-stack, and AI</strong>, working with smart contracts, backend systems, and frontend. I like understanding the <strong>whole stack,</strong> not just one layer.
+                I build across <strong>Backend, AI, and Web3</strong>, focusing on robust architectures and end-to-end development. I like understanding the <strong>whole stack</strong>, and have shipped systems spanning AI infrastructure, confidential Web3 apps, and industrial IoT.
               </p>
 
               <p className="about-text">
-                Hackathons shaped my mindset. Build fast, think deep, and deliver under pressure. I've been to <strong>15+ hackathons</strong>, won a few, and learned more there than any textbook. <strong>I believe in Build what Matters</strong>
+                Hackathons shaped how I build. I've competed in <strong>15+ hackathons</strong> and <strong>won 8</strong>, learning to move fast, think deeply, and deliver under pressure. I strongly believe in <strong>Building what Matters</strong>—shipping useful things that solve real problems.
               </p>
 
               <p className="about-text">
-                Outside code, I travel and shoot. A reminder that great systems, like great photos, need clarity, patience, and intent.
+                Outside code, I travel and shoot photos. It's a reminder that great systems, like great photographs, require clarity, patience, and intent.
               </p>
             </div>
             <div className="github-calendar-container">
@@ -536,9 +549,9 @@ function App() {
                   <Zap size={20} /> Learning Now
                 </h3>
                 <ul className="info-list">
-                  <li>AI in Web3</li>
+                  <li>Scalable Architectures</li>
                   <li>System Design</li>
-                  <li>Solana Development</li>
+                  <li>AWS & Cloud</li>
                 </ul>
               </div>
               <div className="info-card">
@@ -546,9 +559,9 @@ function App() {
                   <BookOpen size={20} /> Interests
                 </h3>
                 <ul className="info-list">
+                  <li>Distributed Systems</li>
+                  <li>Gen AI & Applied AI</li>
                   <li>DeFi Protocols</li>
-                  <li>Hackathons</li>
-                  <li>Generative AI</li>
                 </ul>
               </div>
             </div>
