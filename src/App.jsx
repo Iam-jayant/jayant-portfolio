@@ -858,7 +858,7 @@ function App() {
       <div className="header">
         <div className="profile-section">
           <img
-            src="/profile.jpg"
+            src="/profile.png"
             alt="Jayant Kurekar"
             className="profile-image"
             loading="lazy"
