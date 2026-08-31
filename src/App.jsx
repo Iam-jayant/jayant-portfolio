@@ -134,7 +134,7 @@ function App() {
     email: 'jayantkurekar1@gmail.com',
     twitter: 'https://x.com/0xjayantxyz',
     telegram: 'https://t.me/staticmelon',
-    resume: '/jayant_fullstack_resume.pdf'
+    resume: '/Jayant_Full_Stack_Developer_Resume.pdf'
   }
 
   // Stack Data
