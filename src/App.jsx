@@ -239,6 +239,19 @@ function App() {
     },
     // ── Row 3: three smalls together ──
     {
+      title: 'Tele-Shell',
+      year: '2026',
+      tags: ['AI', 'SYSOPS', 'AGENT'],
+      size: 'lg',
+      description: 'Tele-Shell is an autonomous SysOps agent designed to navigate, repair, and secure complex environments. It translates natural language intent into verified system actions.',
+      features: [
+        'Full Autonomy & Adaptive Operating Modes',
+        'Safe Execution: Undo & Sentinel 1.5',
+        'E2E Encrypted P2P Terminal Sharing'
+      ],
+      repo: 'https://github.com/Iam-jayant/tele-shell'
+    },
+    {
       title: 'Code Vault',
       year: '2025',
       tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
@@ -255,7 +268,7 @@ function App() {
       title: 'SAAD - AI Sentiment Alert System',
       year: '2025',
       tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
-      size: 'sm',
+      size: 'lg',
       description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
       features: [
         'Real-time social media monitoring',
