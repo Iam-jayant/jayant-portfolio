@@ -128,7 +128,7 @@ function App() {
   // Personal Data
   const personalInfo = {
     name: 'JAYANT',
-    techStack: 'WEB3 | FULL-STACK | AI',
+    techStack: 'BACKEND | AI | FULL-STACK | WEB3',
     github: 'Iam-jayant',
     linkedin: 'jayant-kurekar',
     email: 'jayantkurekar1@gmail.com',
@@ -165,7 +165,7 @@ function App() {
     },
     {
       category: 'Cloud',
-      items: ['Azure AI', 'Firebase', 'Docker']
+      items: ['AWS', 'Google Cloud', 'Azure AI', 'Firebase', 'Docker']
     },
     {
       category: 'Tools & Platforms',
