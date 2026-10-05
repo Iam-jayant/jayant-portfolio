@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Linkedin, Github, Mail, Twitter, Send, FileText, Trophy, ExternalLink, Zap, BookOpen, Coffee, X, Smartphone, Monitor, Copy, Check, GitMerge, Award, GitPullRequest } from 'lucide-react'
 import GitHubCalendar from 'react-github-calendar'
+import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 
 const XLogo = ({ size = 18 }) => (
@@ -995,7 +996,17 @@ function App() {
 
       {/* Content Area */}
       <div className="content-area">
-        {renderContent()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            {renderContent()}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       <footer className="footer">
