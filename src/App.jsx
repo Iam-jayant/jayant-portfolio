@@ -175,9 +175,7 @@ function App() {
   ]
 
   // Projects Data — size drives bento grid: 'lg' = 2 cols, 'sm' = 1 col
-  // Order tuned for 3-col bento: lg+sm | lg+sm | sm+sm+sm | lg+sm | lg+sm
-  const projects = [
-    // ── Row 1: lg + sm ──
+  const priorityProjects = [
     {
       title: 'InfrGate',
       year: '2026',
@@ -192,6 +190,69 @@ function App() {
       ],
       repo: 'https://github.com/Iam-jayant/Infrgate',
       live: 'https://infrgate.vercel.app'
+    },
+    {
+      title: 'Tele-Shell',
+      year: '2026',
+      tags: ['AI', 'SYSOPS', 'AGENT'],
+      size: 'lg',
+      description: 'Tele-Shell is an autonomous SysOps agent designed to navigate, repair, and secure complex environments. It translates natural language intent into verified system actions.',
+      features: [
+        'Full Autonomy & Adaptive Operating Modes',
+        'Safe Execution: Undo & Sentinel 1.5',
+        'E2E Encrypted P2P Terminal Sharing'
+      ],
+      repo: 'https://github.com/Iam-jayant/tele-shell'
+    },
+    {
+      title: 'Walnut',
+      year: '2026',
+      tags: ['Fhenix', 'SOLIDITY', 'TYPESCRIPT', 'EVM'],
+      grantWinner: true,
+      size: 'lg',
+      description: 'A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted and the protocol still works. Not despite encryption. Because of it.',
+      features: [
+        'Fully Homomorphic Encryption : Computations happen on encrypted data.',
+        'Private State : Your positions, balances, and credit score are computed privately.',
+        'Private Liquidations : No public mempool. No liquidation sniping. No MEV extraction.',
+      ],
+      repo: 'https://github.com/Iam-jayant/walnut',
+      live: 'https://walnut-finance.vercel.app/'
+    },
+    {
+      title: 'SAAD - AI Sentiment Alert System',
+      year: '2025',
+      tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
+      size: 'lg',
+      description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
+      features: [
+        'Real-time social media monitoring',
+        'Advanced sentiment analysis',
+        'Slack & Email integration'
+      ],
+      repo: 'https://github.com/Iam-jayant/Agent-Saad'
+    }
+  ]
+
+  // Projects Data — size drives bento grid: 'lg' = 2 cols, 'sm' = 1 col
+  // Order tuned for 3-col bento: lg+sm | lg+sm | sm+sm+sm | lg+sm | lg+sm
+  const bentoProjects = [
+    // ── Row 1: lg + sm ──
+    {
+      title: 'Bliss',
+      year: '2026',
+      tags: ['ALEO BLOCKCHAIN', 'WEB3', 'PRIVACY'],
+      grantWinner: true,
+      size: 'lg',
+      description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation.',
+      features: [
+        'Privacy-first identity & permission management',
+        'AI-driven access control + smart automation',
+        'Secure user data flow using decentralized verification',
+        'Built for scalable Web3 apps & real-world adoption'
+      ],
+      repo: 'https://github.com/Iam-jayant/bliss-dating-app',
+      live: 'https://bliss-dating.vercel.app/'
     },
     {
       title: 'ProofOS',
@@ -210,19 +271,18 @@ function App() {
     },
     // ── Row 2: lg + sm ──
     {
-      title: 'Walnut',
-      year: '2026',
-      tags: ['Fhenix', 'SOLIDITY', 'TYPESCRIPT', 'EVM'],
-      grantWinner: true,
+      title: 'Ascend Protocol',
+      year: '2025',
+      tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
+      hackathonWinner: true,
       size: 'lg',
-      description: 'A confidential lending protocol where your collateral, debt, health factor, and liquidation threshold are fully encrypted and the protocol still works. Not despite encryption. Because of it.',
+      description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
       features: [
-        'Fully Homomorphic Encryption : Computations happen on encrypted data.',
-        'Private State : Your positions, balances, and credit score are computed privately.',
-        'Private Liquidations : No public mempool. No liquidation sniping. No MEV extraction.',
+        'Smart contract-based inheritance vaults',
+        'Automated beneficiary distribution',
+        'Secure multi-signature support'
       ],
-      repo: 'https://github.com/Iam-jayant/walnut',
-      live: 'https://walnut-finance.vercel.app/'
+      repo: 'https://github.com/Iam-jayant'
     },
     {
       title: 'Blitzboard',
@@ -240,19 +300,6 @@ function App() {
     },
     // ── Row 3: three smalls together ──
     {
-      title: 'Tele-Shell',
-      year: '2026',
-      tags: ['AI', 'SYSOPS', 'AGENT'],
-      size: 'lg',
-      description: 'Tele-Shell is an autonomous SysOps agent designed to navigate, repair, and secure complex environments. It translates natural language intent into verified system actions.',
-      features: [
-        'Full Autonomy & Adaptive Operating Modes',
-        'Safe Execution: Undo & Sentinel 1.5',
-        'E2E Encrypted P2P Terminal Sharing'
-      ],
-      repo: 'https://github.com/Iam-jayant/tele-shell'
-    },
-    {
       title: 'Code Vault',
       year: '2025',
       tags: ['MOVE', 'TYPESCRIPT', 'NODE.JS'],
@@ -264,19 +311,6 @@ function App() {
         'Trustless Payments with blockchain-backed rewards'
       ],
       live: 'https://codevault-asyncawait.netlify.app/'
-    },
-    {
-      title: 'SAAD - AI Sentiment Alert System',
-      year: '2025',
-      tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
-      size: 'lg',
-      description: 'Intelligent AI agent that continuously monitors Twitter/X and Reddit for brand mentions, analyzes sentiment, and sends real-time alerts.',
-      features: [
-        'Real-time social media monitoring',
-        'Advanced sentiment analysis',
-        'Slack & Email integration'
-      ],
-      repo: 'https://github.com/Iam-jayant/Agent-Saad'
     },
     {
       title: 'CRYPT - NFT Gift Protocol',
@@ -291,23 +325,6 @@ function App() {
       ],
       repo: 'https://github.com/Iam-jayant/CRYPT'
     },
-    // ── Row 4: lg + sm ──
-    {
-      title: 'Bliss',
-      year: '2026',
-      tags: ['ALEO BLOCKCHAIN', 'WEB3', 'PRIVACY'],
-      grantWinner: true,
-      size: 'lg',
-      description: 'AI + Web3 privacy-focused dating platform that helps users securely manage identity, access, and permissions. Built with a forward-thinking approach to decentralized trust and automation.',
-      features: [
-        'Privacy-first identity & permission management',
-        'AI-driven access control + smart automation',
-        'Secure user data flow using decentralized verification',
-        'Built for scalable Web3 apps & real-world adoption'
-      ],
-      repo: 'https://github.com/Iam-jayant/bliss-dating-app',
-      live: 'https://bliss-dating.vercel.app/'
-    },
     {
       title: 'EraseIt - Ultra-Fast Drive Wiper',
       year: '2025',
@@ -321,21 +338,7 @@ function App() {
       ],
       repo: 'https://github.com/Iam-jayant/EraseIt'
     },
-    // ── Row 5: lg + sm ──
-    {
-      title: 'Ascend Protocol',
-      year: '2025',
-      tags: ['SEPOLIA', 'SOLIDITY', 'REACT'],
-      hackathonWinner: true,
-      size: 'lg',
-      description: 'Crypto Inheritance protocol that enables users to create inheritance vaults for their crypto assets with automatic distribution to beneficiaries.',
-      features: [
-        'Smart contract-based inheritance vaults',
-        'Automated beneficiary distribution',
-        'Secure multi-signature support'
-      ],
-      repo: 'https://github.com/Iam-jayant'
-    },
+    // ── Row 4: one small (will stretch) ──
     {
       title: 'Jeevan Setu - Bridge of Life',
       year: '2025',
@@ -615,51 +618,100 @@ function App() {
 
       case 'projects':
         return (
-          <div className="proj-pool">
-            {projects.map((project) => (
-              <div
-                key={project.title}
-                className={`proj-tile ${project.size === 'lg' ? 'proj-tile-lg' : 'proj-tile-sm'}`}
-              >
-                {project.grantWinner && (
-                  <div className="bento-badge bento-badge-grant">GRANT WINNER</div>
-                )}
-                {project.hackathonWinner && (
-                  <div className="bento-badge proj-badge-hack">HACKATHON WINNER</div>
-                )}
-                <div className="proj-tile-header">
-                  <div className="proj-tile-meta">
-                    <h3 className="proj-tile-title">{project.title}</h3>
-                    <span className="proj-tile-year">{project.year}</span>
+          <div className="projects-container">
+            <div className="proj-pool-priority">
+              {priorityProjects.map((project) => (
+                <div
+                  key={project.title}
+                  className={`proj-tile proj-tile-lg`}
+                >
+                  {project.grantWinner && (
+                    <div className="bento-badge bento-badge-grant">GRANT WINNER</div>
+                  )}
+                  {project.hackathonWinner && (
+                    <div className="bento-badge proj-badge-hack">HACKATHON WINNER</div>
+                  )}
+                  <div className="proj-tile-header">
+                    <div className="proj-tile-meta">
+                      <h3 className="proj-tile-title">{project.title}</h3>
+                      <span className="proj-tile-year">{project.year}</span>
+                    </div>
+                    <div className="proj-tile-actions">
+                      {project.repo && (
+                        <a href={project.repo} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="View Repository" aria-label={`Open ${project.title} repository`}>
+                          <Github size={16} />
+                        </a>
+                      )}
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="Open Live Site" aria-label={`Open ${project.title} live site`}>
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="proj-tile-actions">
-                    {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="View Repository" aria-label={`Open ${project.title} repository`}>
-                        <Github size={16} />
-                      </a>
-                    )}
-                    {project.live && (
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="Open Live Site" aria-label={`Open ${project.title} live site`}>
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <div className="proj-tile-tags">
-                  {project.tags.map((tag) => (
-                    <span key={`${project.title}-${tag}`} className="proj-tile-tag">{tag}</span>
-                  ))}
-                </div>
-                <p className="proj-tile-desc">{project.description}</p>
-                {project.features && (
-                  <ul className="proj-tile-features">
-                    {project.features.map((feature) => (
-                      <li key={`${project.title}-${feature}`}>{feature}</li>
+                  <div className="proj-tile-tags">
+                    {project.tags.map((tag) => (
+                      <span key={`${project.title}-${tag}`} className="proj-tile-tag">{tag}</span>
                     ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+                  </div>
+                  <p className="proj-tile-desc">{project.description}</p>
+                  {project.features && (
+                    <ul className="proj-tile-features">
+                      {project.features.map((feature) => (
+                        <li key={`${project.title}-${feature}`}>{feature}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div className="proj-pool">
+              {bentoProjects.map((project) => (
+                <div
+                  key={project.title}
+                  className={`proj-tile ${project.size === 'lg' ? 'proj-tile-lg' : 'proj-tile-sm'}`}
+                >
+                  {project.grantWinner && (
+                    <div className="bento-badge bento-badge-grant">GRANT WINNER</div>
+                  )}
+                  {project.hackathonWinner && (
+                    <div className="bento-badge proj-badge-hack">HACKATHON WINNER</div>
+                  )}
+                  <div className="proj-tile-header">
+                    <div className="proj-tile-meta">
+                      <h3 className="proj-tile-title">{project.title}</h3>
+                      <span className="proj-tile-year">{project.year}</span>
+                    </div>
+                    <div className="proj-tile-actions">
+                      {project.repo && (
+                        <a href={project.repo} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="View Repository" aria-label={`Open ${project.title} repository`}>
+                          <Github size={16} />
+                        </a>
+                      )}
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer" className="proj-tile-btn" title="Open Live Site" aria-label={`Open ${project.title} live site`}>
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <div className="proj-tile-tags">
+                    {project.tags.map((tag) => (
+                      <span key={`${project.title}-${tag}`} className="proj-tile-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <p className="proj-tile-desc">{project.description}</p>
+                  {project.features && (
+                    <ul className="proj-tile-features">
+                      {project.features.map((feature) => (
+                        <li key={`${project.title}-${feature}`}>{feature}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         )
 

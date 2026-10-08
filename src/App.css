@@ -398,6 +398,24 @@
    Bento Pool — Projects Grid
    ═══════════════════════════════════════════ */
 
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.proj-pool-priority {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.proj-pool-priority .proj-tile-lg {
+  grid-column: span 1;
+}
+
 .proj-pool {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1280,7 +1298,7 @@
     padding: 20px;
   }
 
-  .proj-pool {
+  .proj-pool, .proj-pool-priority {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
@@ -1532,7 +1550,7 @@
   }
 
   /* Project pool — mobile */
-  .proj-pool {
+  .proj-pool, .proj-pool-priority {
     grid-template-columns: 1fr;
     gap: 12px;
   }
