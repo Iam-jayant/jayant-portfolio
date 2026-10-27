@@ -98,12 +98,12 @@
   cursor: pointer;
   position: relative;
   will-change: max-width, transform, background-color;
-  transition: max-width 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              padding-right 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: max-width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              padding-right 0.8s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.4s ease,
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s ease,
-              border-color 0.4s ease;
+              transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
 }
 
 .social-link-icon {
@@ -114,7 +114,7 @@
   height: 20px;
   flex-shrink: 0;
   will-change: transform;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link-handle {
@@ -126,8 +126,8 @@
   opacity: 0;
   transform: translateX(8px);
   will-change: opacity, transform;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  transition: opacity 0.4s ease 0.08s,
+              transform 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.08s;
   white-space: nowrap;
   pointer-events: none;
 }
@@ -136,13 +136,13 @@
   max-width: 300px;
   padding-right: 16px;
   background-color: var(--hover-bg, var(--accent-yellow));
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: 4px 4px 0px 0px black;
   z-index: 10;
 }
 
 .social-link:hover .social-link-icon {
-  transform: scale(1.1);
+  transform: scale(1.04);
 }
 
 .social-link:hover .social-link-handle {
@@ -299,9 +299,9 @@
 }
 
 .stack-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -320,6 +320,25 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.stack-cat-ai-agents {
+  grid-column: 1 / -1;
+  border-left: 6px solid var(--accent-pink);
+}
+.stack-cat-automation { border-left: 6px solid var(--accent-yellow); }
+.stack-cat-developer-tools { border-left: 6px solid var(--accent-lavender); }
+.stack-cat-cloud-infrastructure { border-left: 6px solid var(--accent-blue); }
+.stack-cat-platforms-services { border-left: 6px solid var(--accent-green); }
+.stack-cat-ai-agents .stack-category-title { background-color: var(--accent-pink); }
+.stack-cat-automation .stack-category-title { background-color: var(--accent-yellow); }
+.stack-cat-developer-tools .stack-category-title { background-color: var(--accent-lavender); }
+.stack-cat-cloud-infrastructure .stack-category-title { background-color: var(--accent-blue); }
+.stack-cat-platforms-services .stack-category-title { background-color: var(--accent-green); }
+.stack-cat-ai-agents .stack-item:hover { background-color: var(--accent-pink); }
+.stack-cat-automation .stack-item:hover { background-color: var(--accent-yellow); }
+.stack-cat-developer-tools .stack-item:hover { background-color: var(--accent-lavender); }
+.stack-cat-cloud-infrastructure .stack-item:hover { background-color: var(--accent-blue); }
+.stack-cat-platforms-services .stack-item:hover { background-color: var(--accent-green); }
 
 .stack-card:hover {
   transform: translate(2px, 2px);
@@ -424,9 +443,12 @@
   box-sizing: border-box;
 }
 
-/* Last tile stretches to fill remaining row space */
+/* Center the final compact project so it doesn't become an oversized banner. */
 .proj-pool > .proj-tile-sm:last-child {
   grid-column: 1 / -1;
+  width: 100%;
+  max-width: 66%;
+  justify-self: center;
 }
 
 .proj-tile {
@@ -479,6 +501,10 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
+}
+
+.proj-tile:has(.bento-badge) .proj-tile-header {
+  padding-top: 20px;
 }
 
 .proj-tile-meta {
@@ -1240,6 +1266,18 @@
 
 /* Tablet and below */
 @media (max-width: 768px) {
+  .proj-pool > .proj-tile-sm:last-child {
+    max-width: none;
+  }
+
+  .stack-list {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-cat-ai-agents {
+    grid-column: auto;
+  }
+
   .app {
     padding: 30px 16px;
   }

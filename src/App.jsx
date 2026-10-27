@@ -141,11 +141,19 @@ function App() {
   // Stack Data
   const stackData = [
     {
+      category: 'AI & Agents',
+      items: ['Generative AI', 'LLM Integration', 'AI Agents', 'Agent Workflows', 'RAG', 'MCP', 'Hugging Face']
+    },
+    {
+      category: 'Automation',
+      items: ['n8n', 'Workflow Automation']
+    },
+    {
       category: 'Languages',
       items: ['JavaScript', 'TypeScript', 'Solidity', 'Java', 'Python', 'SQL']
     },
     {
-      category: 'Frameworks',
+      category: 'Backend & Frontend',
       items: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'FastAPI']
     },
     {
@@ -161,16 +169,16 @@ function App() {
       items: ['PostgreSQL', 'MongoDB']
     },
     {
-      category: 'AI/ML',
-      items: ['LLM Integration', 'Agent Pipelines', 'RAG', 'Hugging Face', 'Scikit-learn']
-    },
-    {
-      category: 'Cloud',
+      category: 'Cloud & Infrastructure',
       items: ['AWS', 'Google Cloud', 'Azure AI', 'Firebase', 'Docker']
     },
     {
-      category: 'Tools & Platforms',
-      items: ['Git', 'GitHub', 'Google Colab', 'Microsoft Office (Excel, Word, PowerPoint)', 'Privy', 'MCP', 'Supabase']
+      category: 'Developer Tools',
+      items: ['Cursor', 'Claude Code', 'Codex', 'Lovable', 'Git', 'GitHub', 'Google Colab']
+    },
+    {
+      category: 'Platforms & Services',
+      items: ['Privy', 'Supabase', 'Scikit-learn']
     }
   ]
 
@@ -529,11 +537,7 @@ function App() {
               <h2 className="about-title">Hi, I'm Jayant.</h2>
 
               <p className="about-text">
-                I'm a Full-Stack Software Engineer. I genuinely enjoy building systems that actually work <br />from infrastructure to complete products.
-              </p>
-
-              <p className="about-text">
-                I build across <strong>Backend, AI, and Web3</strong>, focusing on robust architectures and end-to-end development. I like understanding the <strong>whole stack</strong>, and have shipped systems spanning AI infrastructure, confidential Web3 apps, and industrial IoT.
+                I'm a Full-Stack Software Engineer building across <strong>backend systems, AI agents, and Web3</strong>. I enjoy taking ideas from prototype to production, creating useful products and the infrastructure behind them. My work includes <strong>LLM-powered applications, agent workflows, and AI infrastructure</strong>, alongside full-stack and Web3 products.
               </p>
 
               <p className="about-text">
