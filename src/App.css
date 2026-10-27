@@ -326,17 +326,17 @@
   border-left: 6px solid var(--accent-pink);
 }
 .stack-cat-automation { border-left: 6px solid var(--accent-yellow); }
-.stack-cat-developer-tools { border-left: 6px solid var(--accent-lavender); }
+.stack-cat-developer-tools-automation { border-left: 6px solid var(--accent-lavender); }
 .stack-cat-cloud-infrastructure { border-left: 6px solid var(--accent-blue); }
 .stack-cat-platforms-services { border-left: 6px solid var(--accent-green); }
 .stack-cat-ai-agents .stack-category-title { background-color: var(--accent-pink); }
 .stack-cat-automation .stack-category-title { background-color: var(--accent-yellow); }
-.stack-cat-developer-tools .stack-category-title { background-color: var(--accent-lavender); }
+.stack-cat-developer-tools-automation .stack-category-title { background-color: var(--accent-lavender); }
 .stack-cat-cloud-infrastructure .stack-category-title { background-color: var(--accent-blue); }
 .stack-cat-platforms-services .stack-category-title { background-color: var(--accent-green); }
 .stack-cat-ai-agents .stack-item:hover { background-color: var(--accent-pink); }
 .stack-cat-automation .stack-item:hover { background-color: var(--accent-yellow); }
-.stack-cat-developer-tools .stack-item:hover { background-color: var(--accent-lavender); }
+.stack-cat-developer-tools-automation .stack-item:hover { background-color: var(--accent-lavender); }
 .stack-cat-cloud-infrastructure .stack-item:hover { background-color: var(--accent-blue); }
 .stack-cat-platforms-services .stack-item:hover { background-color: var(--accent-green); }
 
@@ -388,7 +388,7 @@
 .stack-cat-frameworks { border-left: 6px solid var(--accent-blue); }
 .stack-cat-web3 { border-left: 6px solid var(--accent-lavender); }
 .stack-cat-blockchain { border-left: 6px solid var(--accent-yellow); }
-.stack-cat-databases { border-left: 6px solid var(--accent-green); }
+.stack-cat-data-backend-services { border-left: 6px solid var(--accent-green); }
 .stack-cat-ai-ml { border-left: 6px solid var(--accent-pink); }
 .stack-cat-cloud { border-left: 6px solid var(--accent-blue); }
 .stack-cat-tools-platforms { border-left: 6px solid var(--accent-lavender); }
@@ -398,7 +398,7 @@
 .stack-cat-frameworks .stack-category-title { background-color: var(--accent-blue); }
 .stack-cat-web3 .stack-category-title { background-color: var(--accent-lavender); }
 .stack-cat-blockchain .stack-category-title { background-color: var(--accent-yellow); }
-.stack-cat-databases .stack-category-title { background-color: var(--accent-green); }
+.stack-cat-data-backend-services .stack-category-title { background-color: var(--accent-green); }
 .stack-cat-ai-ml .stack-category-title { background-color: var(--accent-pink); }
 .stack-cat-cloud .stack-category-title { background-color: var(--accent-blue); }
 .stack-cat-tools-platforms .stack-category-title { background-color: var(--accent-lavender); }
@@ -408,7 +408,7 @@
 .stack-cat-frameworks .stack-item:hover { background-color: var(--accent-blue); }
 .stack-cat-web3 .stack-item:hover { background-color: var(--accent-lavender); }
 .stack-cat-blockchain .stack-item:hover { background-color: var(--accent-yellow); }
-.stack-cat-databases .stack-item:hover { background-color: var(--accent-green); }
+.stack-cat-data-backend-services .stack-item:hover { background-color: var(--accent-green); }
 .stack-cat-ai-ml .stack-item:hover { background-color: var(--accent-pink); }
 .stack-cat-cloud .stack-item:hover { background-color: var(--accent-blue); }
 .stack-cat-tools-platforms .stack-item:hover { background-color: var(--accent-lavender); }

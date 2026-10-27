@@ -141,14 +141,6 @@ function App() {
   // Stack Data
   const stackData = [
     {
-      category: 'AI & Agents',
-      items: ['Generative AI', 'LLM Integration', 'AI Agents', 'Agent Workflows', 'RAG', 'MCP', 'Hugging Face']
-    },
-    {
-      category: 'Automation',
-      items: ['n8n', 'Workflow Automation']
-    },
-    {
       category: 'Languages',
       items: ['JavaScript', 'TypeScript', 'Solidity', 'Java', 'Python', 'SQL']
     },
@@ -157,28 +149,28 @@ function App() {
       items: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'FastAPI']
     },
     {
+      category: 'AI & Agents',
+      items: ['Generative AI', 'LLM Integration', 'AI Agents', 'Agent Workflows', 'RAG', 'MCP', 'Hugging Face', 'Scikit-learn']
+    },
+    {
       category: 'Web3',
-      items: ['Web3.js', 'Hardhat', 'Ethers.js', 'Smart Contracts']
+      items: ['Web3.js', 'Hardhat', 'Ethers.js', 'Smart Contracts', 'Privy']
     },
     {
       category: 'Blockchain',
       items: ['Ethereum', 'EVM L2 chains', 'Monad', 'Movement', 'Aptos']
     },
     {
-      category: 'Databases',
-      items: ['PostgreSQL', 'MongoDB']
+      category: 'Data & Backend Services',
+      items: ['PostgreSQL', 'MongoDB', 'Supabase']
     },
     {
       category: 'Cloud & Infrastructure',
       items: ['AWS', 'Google Cloud', 'Azure AI', 'Firebase', 'Docker']
     },
     {
-      category: 'Developer Tools',
-      items: ['Cursor', 'Claude Code', 'Codex', 'Lovable', 'Git', 'GitHub', 'Google Colab']
-    },
-    {
-      category: 'Platforms & Services',
-      items: ['Privy', 'Supabase', 'Scikit-learn']
+      category: 'Developer Tools & Automation',
+      items: ['Cursor', 'Claude Code', 'Codex', 'Lovable', 'n8n', 'Git', 'GitHub']
     }
   ]
 
