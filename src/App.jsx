@@ -239,9 +239,9 @@ function App() {
       size: 'lg',
       description: 'A self-repaying AI payment platform that lets users spend future yield as instant credit while their USDC principal remains untouched. Deposits earn yield through USYC, while projected returns power AI agent micropayments through Circle Gateway.',
       features: [
-        'Yield-Powered Credit: Access up to 14 days of projected yield upfront without withdrawing your USDC principal.',
-        'Self-Repaying Wallet: USDC stays invested in USYC, generating yield that automatically covers the borrowed spending.',
-        'AI-Native Nanopayments: Enable AI agents to make instant, autonomous micropayments using Circle Gateway.'
+        'Yield-Powered Credit: Access up to 14 days of projected yield upfront without touching principal',
+        'Self-Repaying Wallet: USDC in USYC generates yield that automatically repays borrowed credit',
+        'AI-Native Nanopayments: Autonomous agent micropayments powered by Circle Gateway'
       ],
       repo: 'https://github.com/Iam-jayant/untouched',
       live: 'https://untouchedd.vercel.app/landing'
