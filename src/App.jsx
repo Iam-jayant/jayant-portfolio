@@ -158,7 +158,7 @@ function App() {
     },
     {
       category: 'Blockchain',
-      items: ['Ethereum', 'EVM L2 chains', 'Monad', 'Movement', 'Aptos']
+      items: ['Ethereum', 'EVM L2 chains', 'Arc Network', 'Monad', 'Movement', 'Aptos']
     },
     {
       category: 'Data & Backend Services',
@@ -170,7 +170,7 @@ function App() {
     },
     {
       category: 'Developer Tools & Automation',
-      items: ['Cursor', 'Claude Code', 'Codex', 'Lovable', 'n8n', 'Git', 'GitHub']
+      items: ['Cursor', 'Claude Code', 'Codex', 'Lovable', 'Arc Studio', 'n8n', 'Git', 'GitHub']
     }
   ]
 
@@ -192,19 +192,6 @@ function App() {
       live: 'https://infrgate.vercel.app'
     },
     {
-      title: 'Tele-Shell',
-      year: '2026',
-      tags: ['AI', 'SYSOPS', 'AGENT'],
-      size: 'lg',
-      description: 'Tele-Shell is an autonomous SysOps agent designed to navigate, repair, and secure complex environments. It translates natural language intent into verified system actions.',
-      features: [
-        'Full Autonomy & Adaptive Operating Modes',
-        'Safe Execution: Undo & Sentinel 1.5',
-        'E2E Encrypted P2P Terminal Sharing'
-      ],
-      repo: 'https://github.com/Iam-jayant/tele-shell'
-    },
-    {
       title: 'Walnut',
       year: '2026',
       tags: ['Fhenix', 'SOLIDITY', 'TYPESCRIPT', 'EVM'],
@@ -220,6 +207,19 @@ function App() {
       live: 'https://walnut-finance.vercel.app/'
     },
     {
+      title: 'Tele-Shell',
+      year: '2026',
+      tags: ['AI', 'SYSOPS', 'AGENT'],
+      size: 'lg',
+      description: 'Tele-Shell is an autonomous SysOps agent designed to navigate, repair, and secure complex environments. It translates natural language intent into verified system actions.',
+      features: [
+        'Full Autonomy & Adaptive Operating Modes',
+        'Safe Execution: Undo & Sentinel 1.5',
+        'E2E Encrypted P2P Terminal Sharing'
+      ],
+      repo: 'https://github.com/Iam-jayant/tele-shell'
+    },
+    {
       title: 'SAAD - AI Sentiment Alert System',
       year: '2025',
       tags: ['AI/ML', 'NODE.JS', 'PYTHON'],
@@ -231,6 +231,20 @@ function App() {
         'Slack & Email integration'
       ],
       repo: 'https://github.com/Iam-jayant/Agent-Saad'
+    },
+    {
+      title: 'Untouched',
+      year: '2026',
+      tags: ['USDC', 'USYC', 'AI AGENTS', 'CIRCLE GATEWAY'],
+      size: 'lg',
+      description: 'A self-repaying AI payment platform that lets users spend future yield as instant credit while their USDC principal remains untouched. Deposits earn yield through USYC, while projected returns power AI agent micropayments through Circle Gateway.',
+      features: [
+        'Yield-Powered Credit: Access up to 14 days of projected yield upfront without withdrawing your USDC principal.',
+        'Self-Repaying Wallet: USDC stays invested in USYC, generating yield that automatically covers the borrowed spending.',
+        'AI-Native Nanopayments: Enable AI agents to make instant, autonomous micropayments using Circle Gateway.'
+      ],
+      repo: 'https://github.com/Iam-jayant/untouched',
+      live: 'https://untouchedd.vercel.app/landing'
     }
   ]
 
@@ -619,7 +633,7 @@ function App() {
               {priorityProjects.map((project) => (
                 <div
                   key={project.title}
-                  className={`proj-tile proj-tile-lg`}
+                  className="proj-tile proj-tile-lg"
                 >
                   {project.grantWinner && (
                     <div className="bento-badge bento-badge-grant">GRANT WINNER</div>

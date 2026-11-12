@@ -17,7 +17,7 @@ Welcome to the source code for my personal portfolio website, built to showcase 
 ## ✨ Features
 
 - **Modern & Responsive UI:** Designed with a sleek, minimalist aesthetic using a bento-box layout.
-- **Projects Showcase:** Highlights key projects like InfrGate, ProofOS, Walnut, and Bliss.
+- **Projects Showcase:** Highlights key projects like InfrGate, Walnut, ProofOS, Bliss, and Untouched.
 - **Achievements & Hackathons:** Details on 15+ hackathons and grants won (Fhenix, Aleo, ETHMumbai, etc.).
 - **Interactive Elements:** Smooth tab navigation and a built-in "Buy me a Coffee" payment modal supporting Crypto and UPI.
 - **Live GitHub Stats:** Real-time GitHub contribution graph integration.

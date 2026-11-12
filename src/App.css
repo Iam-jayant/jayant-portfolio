@@ -435,6 +435,18 @@
   grid-column: span 1;
 }
 
+.proj-pool-priority > .proj-tile:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 769px) {
+  .proj-pool-priority > .proj-tile:last-child:nth-child(odd) .proj-tile-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 8px 24px;
+  }
+}
+
 .proj-pool {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
